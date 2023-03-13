@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xitysites</title>
+    <link rel="shortcut icon" href="assets/icon/images/" type="image/png" />
+    <link rel="stylesheet" href="assets/style/legal-dashboard.css" />
+    <link rel="stylesheet" href="assets2/css/admin-dashboard.css" />
+    <link rel="stylesheet" href="assets/style/common.css" />
+    <link
+      rel="stylesheet"
+      href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/fontawesome-free-6.2.0-web/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <section class="main">
+      <div class="container-fluid p-0">
+        <!-- start admin dashboard-section -->
+        <section class="admin-dashboard">
+          <div class="dashboard p-0">
+            <div class="d-flex" id="addFlex">
+              <!-- start sidebar section  -->
+
+              <div
+                class=""
+                data-bs-scroll="true"
+                data-bs-backdrop="false"
+                tabindex="-1"
+                id="offcanvasScrolling"
+                aria-labelledby="offcanvasScrollingLabel"
+              >
+                <div class="offcanvas-body">
+                  <div class="sec-1">
+                    <div
+                      class="nav flex-column nav-pills"
+                      id="v-pills-tab"
+                      role="tablist"
+                      aria-orientation="vertical"
+                    >
+                      <div class="align-close">
+                        <img
+                          class="close-img"
+                          src="assets2/img/icons/close-menu.png"
+                          alt=""
+                          data-bs-dismiss="offcanvas"
+                          aria-label="Close"
+                        />
+                      </div>
+                      <div class="pt-3">
+                        <div class="d-flex logo-div position">
+                          <div>
+                            <img
+                              class="logo-img"
+                              src="assets/images/logo/logo.png"
+                              alt=""
+                            />
+                          </div>
+                          <div class="">
+                            <img
+                              class="dashbord-dot"
+                              src="assets2/img/icons/dashbord-dot.png"
+                              alt=""
+                              data-bs-toggle="modal"
+                              data-bs-target="#full_screen_menu"
+                              data-toggle="tooltip"
+                              title="Grid Fullscreen Menu"
+                              data-bs-placement="bottom"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="username-drop-div">
+                          <div
+                            class="accordion accordion-flush"
+                            id="accordionFlushExample11"
+                          >
+                            <div class="accordion-item">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingUsername"
+                              >
+                                <button
+                                  class="accordion-button fafa-right collapsed"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseUsername"
+                                  aria-expanded="false"
+                                  aria-controls=""
+                                >
+                                  <img
+                                    class="admin-img mt-3"
+                                    src="assets/images/user/admin.png"
+                                    alt=""
+                                  />
+
+                                  <span class="user-p">
+                                    Username <br />
+                                    <p class="desig-p">Designation</p>
+                                  </span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseUsername"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingUsername"
+                                data-bs-parent="#accordionFlushExample11"
+                              >
+                                <div class="accordion-body mt-3">
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i
+                                        class="fa fa-user-o users-fafa"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#">Account</a>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i
+                                        class="fa fa-user-o users-fafa"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#">My Profile</a>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i class="fa fa-wallet users-fafa"></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#">wallet</a>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i
+                                        class="fa fa-inbox users-fafa"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#">Inbox</a>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i
+                                        class="fa fa-calendar-minus-o users-fafa"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#"
+                                        >Taskboard/Calender</a
+                                      >
+                                    </div>
+                                  </div>
+                                  <div class="d-flex mb-3">
+                                    <div>
+                                      <i
+                                        class="fa fa-power-off users-fafa"
+                                        aria-hidden="true"
+                                      ></i>
+                                    </div>
+                                    <div>
+                                      <a class="users-p" href="#">Signout</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="dash-main-menu">
+                          <div
+                            class="accordion accordion-flush"
+                            id="accordionFlushExample"
+                          >
+                            <div class="accordion-item tab-heading-01 mt-4">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingOne"
+                              >
+                                <button
+                                  id="activeButton"
+                                  class="accordion-button active collapsed scale-in-hor-right addimg"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseOne"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseOne"
+                                >
+                                  <b></b>
+                                  <b></b>
+                                  <div class="menu-icon-bg">
+                                    <img
+                                      class="dash-menu-icon"
+                                      src="assets2/img/icons/home.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <span class="hover-remove-p">Main</span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseOne"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne"
+                                data-bs-parent="#accordionFlushExample"
+                              ></div>
+                            </div>
+
+                            <div class="accordion-item tab-heading-01">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingTwo"
+                              >
+                                <button
+                                  id="activeButton"
+                                  class="accordion-button collapsed addimg1"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseTwo"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseTwo"
+                                >
+                                  <b></b>
+                                  <b></b>
+                                  <div class="menu-icon-bg">
+                                    <img
+                                      class="dash-menu-icon"
+                                      src="assets2/img/icons/wallet.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <span class="hover-remove-p"> Directory</span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseTwo"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo"
+                                data-bs-parent="#accordionFlushExample"
+                              >
+                                <div class="accordion-body inner-accordion">
+                                  <div
+                                    class="accordion accordion-flush"
+                                    id="accordionFlushExampleInner1"
+                                  >
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a
+                                          class="menu-link"
+                                          href="all-categories.html"
+                                        >
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >All Categories</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a
+                                          class="menu-link"
+                                          href="all-listing.html"
+                                        >
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >All Listings</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Bookings</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a
+                                          class="menu-link"
+                                          href="/bussiness-user"
+                                        >
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Business Users</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a
+                                          class="menu-link"
+                                          href="frontend.html"
+                                        >
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >FrontEnd</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a
+                                          class="menu-link"
+                                          href="invoices.html"
+                                        >
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Invoices</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >MenuSystem</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="accordion-item">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingOne"
+                              >
+                                <button
+                                  class="accordion-button collapsed addimg2"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseThree"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseThree"
+                                >
+                                  <b></b>
+                                  <b></b>
+                                  <div class="menu-icon-bg">
+                                    <img
+                                      class="dash-menu-icon"
+                                      src="assets2/img/icons/cart.svg"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <span class="hover-remove-p">Ecommerce</span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseThree"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree"
+                                data-bs-parent="#accordionFlushExample"
+                              >
+                                <div class="accordion-body inner-accordion">
+                                  <div
+                                    class="accordion accordion-flush"
+                                    id="accordionFlushExampleInner1"
+                                  >
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="accordion-item">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingTwo"
+                              >
+                                <button
+                                  class="accordion-button collapsed addimg3"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseFour"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseFour"
+                                >
+                                  <b></b>
+                                  <b></b>
+                                  <div class="menu-icon-bg">
+                                    <img
+                                      class="dash-menu-icon"
+                                      src="assets2/img/icons/landing-page.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <span class="hover-remove-p">Ecommerce</span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseFour"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFour"
+                                data-bs-parent="#accordionFlushExample"
+                              >
+                                <div class="accordion-body inner-accordion">
+                                  <div
+                                    class="accordion accordion-flush"
+                                    id="accordionFlushExampleInner1"
+                                  >
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="accordion-item">
+                              <h2
+                                class="accordion-header"
+                                id="flush-headingTwo"
+                              >
+                                <button
+                                  class="accordion-button collapsed addimg4"
+                                  type="button"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#flush-collapseFive"
+                                  aria-expanded="false"
+                                  aria-controls="flush-collapseFive"
+                                >
+                                  <b></b>
+                                  <b></b>
+                                  <div class="menu-icon-bg">
+                                    <img
+                                      class="dash-menu-icon"
+                                      src="assets2/img/icons/apps.png"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <span class="hover-remove-p">Apps</span>
+                                </button>
+                              </h2>
+                              <div
+                                id="flush-collapseFive"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingFive"
+                                data-bs-parent="#accordionFlushExample"
+                              >
+                                <div class="accordion-body inner-accordion">
+                                  <div
+                                    class="accordion accordion-flush"
+                                    id="accordionFlushExampleInner1"
+                                  >
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2
+                                        class="accordion-header"
+                                        id="flush-headingTwo"
+                                      >
+                                        <a class="menu-link" href="">
+                                          <button
+                                            class="accordion-button without-drop-accordion-button-inner collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target=""
+                                            aria-expanded="false"
+                                            aria-controls=""
+                                          >
+                                            <img
+                                              class="dash-menu-icon"
+                                              src="assets/images/icon/bit.png"
+                                              alt=""
+                                            />
+                                            <span class="overview-p"
+                                              >Overview</span
+                                            >
+                                          </button>
+                                        </a>
+                                      </h2>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="made-div">
+                          <p class="year-p">© Ornda 2023-23 ®</p>
+                          <p class="made-p">Made with Gudvil</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end sidebar section  -->
+
+              <!-- start content section  -->
+              <div class="sec-2">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <!-- start dashboard-header section  -->
+                  <section class="header-bg">
+                    <div class="row align-row m-0">
+                      <div class="navbar p-0"></div>
+                      <div
+                        class="col-xxl-3 col-xl-4 col-lg-5 col-md-7 col-sm-10 col-12"
+                      >
+                        <div class="d-flex">
+                          <div class="fafa-bar">
+                            <i
+                              class="fa fa-bars fafa-bar-img"
+                              aria-hidden="true"
+                              data-bs-toggle="offcanvas"
+                              data-bs-target="#offcanvasScrolling"
+                              aria-controls="offcanvasScrolling"
+                            ></i>
+                          </div>
+                          <div>
+                            <img
+                              class="header-menu-img"
+                              src="assets2/img/icons/max-height.png"
+                              alt="max-height"
+                            />
+                          </div>
+                          <div>
+                            <img
+                              class="header-menu-img"
+                              src="assets2/img/icons/notification.png"
+                              alt="max-height"
+                            />
+                          </div>
+                          <div>
+                            <img
+                              class="header-menu-img"
+                              src="assets2/img/icons/setting.png"
+                              alt="max-height"
+                            />
+                          </div>
+                          <div class="navbar dash-drop-menu d-block p-0">
+                            <img
+                              class="header-menu-img dropdown-toggle"
+                              src="assets2/img/icons/dashboard.png"
+                              alt="max-height"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            />
+                            <ul class="dropdown-menu">
+                              <div class="row">
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/bookmark.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Bookmark</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/chat.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Messages</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/balance.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Balance</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/location.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Country</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/location.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">City</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/location.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Pincode</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/translate.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Language</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/cart.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Cart</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/Layer.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Billing</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/Icon.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Activity</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/call.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Contacts</p>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-4 col-space">
+                                  <div class="text-center col-bg">
+                                    <div class="drop-menu-images-div">
+                                      <img
+                                        class="drop-menu-images"
+                                        src="assets2/img/drodown-menu/locked.png"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <p class="menu-name">Lock Screen</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- end dashboard-header section  -->
+
+                  <!-- start breadcrumb section  -->
+                  <section class="breadcrumb-section">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="bread-sec1">
+                          <h6 class="title">Sample Text</h6>
+                          <p class="sub-cont">
+                            Lorem Ipsum is simply dummy text of the printing
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="bread-sec2">
+                          <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb align-bread">
+                              <li class="breadcrumb-item">
+                                <a href="#"
+                                  ><img
+                                    class="bread-home"
+                                    src="assets2/img/icons/bread-home.png"
+                                    alt=""
+                                /></a>
+                              </li>
+                              <li class="breadcrumb-item">
+                                <a class="bread-menu" href="#">Pages</a>
+                              </li>
+                              <li class="breadcrumb-item" aria-current="page">
+                                <a class="bread-menu" href="#">Sample Page</a>
+                              </li>
+                            </ol>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- end breadcrumb section  -->
+                </div>
+              </div>
+              <!-- end content section  -->
+            </div>
+          </div>
+        </section>
+        <!-- end admin dashboard-section -->
+
+        <!--[ Start modal:: Full screen grid menu ]-->
+        <section class="amazing-features-modal">
+          <div class="modal fade qboat" tabindex="-1" id="full_screen_menu">
+            <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content bg-primary-gradient p-lg-5">
+                <div class="modal-header border-0 row">
+                  <div class="col-xxl-6 col-lg-5 col-md-2">
+                    <div class="admin-dash-logo-align">
+                      <img
+                        class="admin-dash-logo"
+                        src="assets/images/logo/logo.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-xxl-5 col-lg-5 col-md-7 modal-menu">
+                    <ul
+                      class="nav me-3 justify-content-lg-end justify-content-center"
+                    >
+                      <li class="nav-item">
+                        <a class="nav-link text-uppercase active" href="#"
+                          >About</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="#">Blog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="#"
+                          >Support us</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="col-xxl-1 col-lg-2 col-md-3">
+                    <div class="download-btn-align">
+                      <button type="button" class="btn download-btn px-3">
+                        Download
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                  <div
+                    class="row g-3 justify-content-center align-items-center"
+                  >
+                    <div
+                      class="col-xxl-3 col-xl-3 col-lg-5 col-md-12 text-lg-start text-center text-white"
+                    >
+                      <h2 class="amazing-title">Amazing Features</h2>
+                      <ul class="list-unstyled mt-3">
+                        <li class="mb-4">
+                          <span class="d-block mb-2 fs-4 fw-light sub-title"
+                            >Handcrafted UI</span
+                          >
+                          <span class="subcontent"
+                            >Each component has been carefully handcrafted and
+                            natively supports dark mode.</span
+                          >
+                        </li>
+                        <li>
+                          <span class="d-block mb-2 fs-4 fw-light sub-title"
+                            >Fast Development</span
+                          >
+                          <span class="subcontent"
+                            >QBoat handles HTML compilation while Gulp
+                            recompiles your SCSS and Javascript code</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-lg-1 col-md-12"></div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-12">
+                      <ul class="grid-menu row g-1">
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                        <li class="col-sm-4 col-6">
+                          <a href="#" class="rounded-4">
+                            <img
+                              class="icon-tag"
+                              src="assets2/img/icons/influencer.png"
+                            />
+                            <span>Influencer</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer border-0">
+                  <button
+                    type="button"
+                    class="btn px-4 py-2 download-btn"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--[ Start offcanvas:: Need a Help ]-->
+      </div>
+    </section>
+
+    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script src="assets/jquery/jquery-3.6.1.min.js"></script>
+    <script src="assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.0/lottie.min.js"
+      integrity="sha512-17otjw7eTNU9MtpB7mFfXEwB6yDjA2qjDFkKSvsywI1PRAgpyOo+cp/wPSE/1kK4fFjA9OKsZVO1tr93MGNCEw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      $(window).on("load", function () {
+        var alterClass = function () {
+          var width = document.body.clientWidth;
+          if (width < 769) {
+            $("#offcanvasScrolling").addClass("offcanvas offcanvas-start");
+          } else if (width >= 768) {
+            $("#offcanvasScrolling").removeClass("offcanvas offcanvas-start");
+          }
+        };
+
+        $(window).resize(function () {
+          alterClass();
+        });
+        alterClass();
+      });
+    </script>
+
+    <!-- <script>
+        $('.accordion-header button').on('click', function(){
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+    </script> -->
+
+    <script>
+      $(".accordion-header button").click(function () {
+        $(".accordion-button").addClass("active");
+      });
+      $(".accordion-header button").click(function () {
+        $(".accordion-button").removeClass("active");
+      });
+    </script>
+
+    <!-- <script>
+        $(window).on('load', function (){
+            var alterClass = function () {
+                var width = document.body.clientWidth;
+                if (width < 769) {
+                    $('#addFlex').addClass('d-flex');            
+                } else if (width >= 768) {
+                    $('#addFlex').removeClass('');
+                    
+                };
+            };
+
+            $(window).resize(function () {
+                alterClass();
+            });
+            alterClass();
+        });
+    </script> -->
+  </body>
+</html>

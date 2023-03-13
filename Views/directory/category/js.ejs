@@ -1,0 +1,35 @@
+<script>
+  function get_all(event) {
+    event.preventDefault();
+    axios
+      .get("http://localhost:5000/directory/category/create")
+      .then(function (res) {
+        var no = 0;
+        var htmldata = "";
+        res.data.forEach(function (data) {
+          no += 1;
+          const idno = data._id;
+          htmldata += `
+              <tr>
+                <td id = "${idno}">${no} </td>
+                  <td >${data.name}</td>
+                  <td><img src="${data.path}" class="img-circle mr-2" style="height:50px" alt="..."></td>
+                  <td>${data.status}</td>
+                  
+                    <td>
+                            
+                            <a href="/category/delete/${idno}"  class="mx-2"><i class="fa-solid fa-trash text-danger"></i></a>
+                          </td>
+                  
+                </tr>
+              `;
+        });
+
+        document.getElementById("tbody1").innerHTML = htmldata;
+      });
+  }
+  window.onload = () => {
+    get_all(event);
+  };
+</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>

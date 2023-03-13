@@ -1,0 +1,25 @@
+.footer{
+    width: 100%;
+    padding: 1% 0;
+    background: #164677;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer p {
+    font-family: "Roboto";
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 0;
+    padding: 10px;
+}
+ 
+@media (max-width:768px){
+    .footer p {
+        font-size: 14px;
+        margin-bottom: 0;
+        padding: 10px;
+    }
+}

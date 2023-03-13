@@ -82,30 +82,47 @@
                           <tr>
                             <td>S.No</td>
                             <td>Listing Categories</td>
+                            <td>Listing Subcategories</td>
+                            <td>Listing Childcategories</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <% var sno=1 %> <% data.forEach(function(category) {
-                          %>
+                          <% var sno=1 %> <%
+                          data.forEach(function(childcategory) { %>
                           <tr>
                             <td><%= sno++ %></td>
+                            <% cdata.forEach(function(category){
+                            if(category._id==childcategory.categoryid){ %>
                             <td>
                               <h6 class="lis-name"><%= category.name %></h6>
+                            </td>
+                            <%} })%> <% sdata.forEach(function(subcategory){
+                            if(subcategory._id==childcategory.subcategoryid &&
+                            subcategory.categoryid==childcategory.categoryid ){
+                            %>
+                            <td>
+                              <h6 class="lis-name"><%= subcategory.name %></h6>
+                            </td>
+                            <%} })%>
+                            <td>
+                              <h6 class="lis-name">
+                                <%= childcategory.name %>
+                              </h6>
                             </td>
 
                             <td>
                               <button class="listing-btn">
-                                <%= moment(category.created).format(
+                                <%= moment(childcategory.created).format(
                                 'MMM-DD-YYYY') %>
                               </button>
                             </td>
 
                             <td>
                               <a
-                                href="http://localhost:5000/directory/childcategory/edit/<%= category._id%>"
+                                href="http://localhost:5000/directory/childcategory/edit/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -116,7 +133,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/childcategory/delete/<%= category._id%>"
+                                href="http://localhost:5000/directory/childcategory/delete/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"

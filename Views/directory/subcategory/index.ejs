@@ -82,30 +82,38 @@
                           <tr>
                             <td>S.No</td>
                             <td>Listing Categories</td>
+                            <td>Listing Subcategories</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <% var sno=1 %> <% data.forEach(function(category) {
-                          %>
+                          <% var sno=1 %> <% data.forEach(function(subcategory)
+                          { %>
                           <tr>
                             <td><%= sno++ %></td>
+
+                            <% cdata.forEach(function(category){
+                            if(category._id==subcategory.categoryid){ %>
                             <td>
                               <h6 class="lis-name"><%= category.name %></h6>
+                            </td>
+                            <%} })%>
+                            <td>
+                              <h6 class="lis-name"><%= subcategory.name %></h6>
                             </td>
 
                             <td>
                               <button class="listing-btn">
-                                <%= moment(category.created).format(
+                                <%= moment(subcategory.created).format(
                                 'MMM-DD-YYYY') %>
                               </button>
                             </td>
 
                             <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/edit/<%= category._id%>"
+                                href="http://localhost:5000/directory/subcategory/edit/<%= subcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -116,7 +124,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/delete/<%= category._id%>"
+                                href="http://localhost:5000/directory/subcategory/delete/<%= subcategory._id%>"
                               >
                                 <img
                                   class="icon-img"

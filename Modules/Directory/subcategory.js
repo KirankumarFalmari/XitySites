@@ -10,7 +10,8 @@ const Category = mongoose.Schema({
     type: String,
   },
   path: {
-    required: true,
+    default: "None",
+    // required: true,
     type: String,
   },
   status: {

@@ -39,9 +39,13 @@ var formatted = dt.format("Y-m-d H:M:S");
 //Fetch List
 route.get("/", async (req, res) => {
   const data = await childcategory.find({});
-  // console.log(data);
+  const cdata = await category.find({});
+  const sdata = await subcategory.find({});
+
   res.render("directory/childcategory/index", {
     data: data,
+    cdata: cdata,
+    sdata: sdata,
     moment: moment,
   });
 });

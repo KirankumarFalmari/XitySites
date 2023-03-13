@@ -49,6 +49,12 @@ route.get("/", async (req, res) => {
     moment: moment,
   });
 });
+route.get("/search/:key", async (req, resp) => {
+  let data = await childcategory.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  resp.send(data);
+});
 
 // get data
 route.get("/data", async (req, res) => {

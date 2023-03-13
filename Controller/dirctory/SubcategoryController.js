@@ -49,6 +49,14 @@ route.get("/", async (req, res) => {
   });
 });
 
+route.get("/search/:key", async (req, resp) => {
+  let data = await subcategory.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  const cdata = await category.find({});
+  resp.send(data);
+});
+
 //Create List
 route.get("/create", async (req, res) => {
   const data = await category.find({});

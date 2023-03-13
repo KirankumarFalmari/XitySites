@@ -142,5 +142,61 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+    <script>
+      function SearchData(event) {
+        event.preventDefault();
+        let key = document.getElementById("search").value;
+        console.log(key);
+        var htmldata = "";
+        axios
+          .get(`http://localhost:5000/directory/category/search/${key}`)
+          .then(function (res) {
+            var no = 0;
+            res.data.forEach(function (data) {
+              no += 1;
+              const idno = data._id;
+              htmldata += `
+              <tr>
+                <td id = "${idno}">${no} </td>
+                  <td >${data.name}</td>
+                  <td>
+                              <button class="listing-btn">
+                                <%= moment(data.created).format(
+                                'MMM-DD-YYYY') %>
+                              </button>
+                            </td>
+                  <td>
+                              <a
+                                href="http://localhost:5000/directory/category/edit/${data._id}"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="assets/images/icon/edit.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+                            <td>
+                              <a
+                                href="http://localhost:5000/directory/category/delete/${data._id}"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="assets/images/icon/delete.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+              </tr>
+              `;
+            });
+            document.getElementById("tbody").innerHTML = htmldata;
+          })
+          .catch((err) => {
+            location.reload();
+          });
+      }
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>

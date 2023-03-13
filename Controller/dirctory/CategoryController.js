@@ -63,6 +63,14 @@ route.post("/create", upload.single("image"), async (req, res) => {
   res.redirect("/directory/category");
 });
 
+route.get("/search/:key", async (req, resp) => {
+  let data = await category.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  // console.log(data);
+  resp.send(data);
+});
+
 let id;
 //Edit List
 route.get("/edit/:id", async (req, res) => {

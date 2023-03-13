@@ -103,36 +103,6 @@
                             <td>
                               <h6 class="lis-name"><%= category.phoneno %></h6>
                             </td>
-
-                            <!-- <td>
-                              <button class="listing-btn">
-                                <%= moment(category.created).format(
-                                'MMM-DD-YYYY') %>
-                              </button>
-                            </td> -->
-
-                            <!-- <td>
-                              <a
-                                href="http://localhost:5000/directory/bussiness-user/edit/<%= category._id%>"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="/assets/images/icon/edit.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td>
-                            <td>
-                              <a
-                                href="http://localhost:5000/directory/bussiness-user/delete/<%= category._id%>"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="/assets/images/icon/delete.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td> -->
                           </tr>
                           <% }); %>
                         </tbody>
@@ -163,13 +133,21 @@
               no += 1;
               const idno = data._id;
               htmldata += `
-              <tr>
-                <td id = "${idno}">${no} </td>
-                  <td >${data.username}</td>
-                  <td>${data.email}</td>
-                  
-                  <td>${data.phoneno}</td>
-              </tr>
+              <% var sno=1 %> <% data.forEach(function(category) {
+                          %>
+                          <tr>
+                            <td><%= sno++ %></td>
+                            <td>
+                              <h6 class="lis-name"><%= category.username %></h6>
+                            </td>
+                            <td>
+                              <h6 class="lis-name"><%= category.email %></h6>
+                            </td>
+                            <td>
+                              <h6 class="lis-name"><%= category.phoneno %></h6>
+                            </td>
+                          </tr>
+                          <% }); %>
               `;
             });
             document.getElementById("tbody").innerHTML = htmldata;

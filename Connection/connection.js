@@ -7,7 +7,7 @@ const data = {
 };
 mongoose
   .connect(
-    "mongodb+srv://kirankumarfalmari:Kiran123@cluster0.zretqvn.mongodb.net/xitysites?retryWrites=true&w=majority",
+    "mongodb+srv://Demo:Demo123@cluster0.zretqvn.mongodb.net/xitysites?retryWrites=true&w=majority",
     data
   )
   .then(() => {

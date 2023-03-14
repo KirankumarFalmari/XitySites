@@ -12,7 +12,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cookie());
 app.use(express.json());
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "/Views"));
 const css_path = path.join(__dirname, "./Public/");
 app.use(express.static(css_path));
 

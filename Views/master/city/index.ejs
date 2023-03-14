@@ -82,29 +82,46 @@
                           <tr>
                             <td>S.No</td>
                             <td>Listing Country</td>
+                            <td>Listing State</td>
+                            <td>Listing City</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <% var sno=1 %> <% data.forEach(function(country) { %>
+                          <% var sno=1 %> <%
+                          data.forEach(function(childcategory) { %>
                           <tr>
                             <td><%= sno++ %></td>
+                            <% cdata.forEach(function(category){
+                            if(category._id==childcategory.countryid){ %>
                             <td>
-                              <h6 class="lis-name"><%= country.name %></h6>
+                              <h6 class="lis-name"><%= category.name %></h6>
+                            </td>
+                            <%} })%> <% sdata.forEach(function(subcategory){
+                            if(subcategory._id==childcategory.stateid &&
+                            subcategory.countryid==childcategory.countryid ){ %>
+                            <td>
+                              <h6 class="lis-name"><%= subcategory.name %></h6>
+                            </td>
+                            <%} })%>
+                            <td>
+                              <h6 class="lis-name">
+                                <%= childcategory.name %>
+                              </h6>
                             </td>
 
                             <td>
                               <button class="listing-btn">
-                                <%= moment(country.created).format(
+                                <%= moment(childcategory.created).format(
                                 'MMM-DD-YYYY') %>
                               </button>
                             </td>
 
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/edit/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/city/edit/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -115,7 +132,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/delete/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/city/delete/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -141,61 +158,5 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
-    <script>
-      function SearchData(event) {
-        event.preventDefault();
-        let key = document.getElementById("search").value;
-        console.log(key);
-        var htmldata = "";
-        axios
-          .get(`https://xitysites.onrender.com/master/country/search/${key}`)
-          .then(function (res) {
-            var no = 0;
-            res.data.forEach(function (data) {
-              no += 1;
-              const idno = data._id;
-              htmldata += `
-              <tr>
-                <td id = "${idno}">${no} </td>
-                  <td >${data.name}</td>
-                  <td>
-                              <button class="listing-btn">
-                                <%= moment(data.created).format(
-                                'MMM-DD-YYYY') %>
-                              </button>
-                            </td>
-                  <td>
-                              <a
-                                href="https://xitysites.onrender.com/master/country/edit/${data._id}"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="assets/images/icon/edit.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td>
-                            <td>
-                              <a
-                                href="https://xitysites.onrender.com/master/country/delete/${data._id}"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="assets/images/icon/delete.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td>
-              </tr>
-              `;
-            });
-            document.getElementById("tbody").innerHTML = htmldata;
-          })
-          .catch((err) => {
-            location.reload();
-          });
-      }
-    </script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>

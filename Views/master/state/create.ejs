@@ -21,7 +21,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="bread-sec1">
-                          <h6 class="title">Add Country</h6>
+                          <h6 class="title">Add subcategory</h6>
                           <p class="sub-cont">
                             <!-- Lorem Ipsum is simply dummy text of the printing -->
                           </p>
@@ -42,12 +42,12 @@
                               <li class="breadcrumb-item">
                                 <a
                                   class="bread-menu"
-                                  href="https://xitysites.onrender.com/master/country"
-                                  >Country List</a
+                                  href="https://xitysites.onrender.com/directory/subcategory"
+                                  >Category List</a
                                 >
                               </li>
                               <li class="breadcrumb-item" aria-current="page">
-                                <a class="bread-menu" href="#">Add Country</a>
+                                <a class="bread-menu" href="#">Add Category</a>
                               </li>
                             </ol>
                           </nav>
@@ -58,11 +58,59 @@
                   <section class="main-content">
                   
                     <div class="table-section">
-                  
-                      <form
-                        method="post"
-                        action="https://xitysites.onrender.com/master/country/create"
+                      <form method="post" action="https://xitysites.onrender.com/master/state/create" >
+                        <div class="row">
+                          <div class="col-md-6 px-5">
+                          <div class="mb-4 row">
+                            <label for="unit" class="col-md-2 col-sm-4 form-label">select Category</label>
+                            <div class="col-md-8 col-sm-8">
+                              
+                             <select class="form-select" id="selectcountry" name="selectcountry">
+                              <option value="">Select Country</option>
+                                  <% data.forEach(function(country){ %>
+                                   <option value="<%= country._id %>"><%= country.name %></option>
+                                    <% }) %>
+                             </select>
+                         
+                              <div class="form-text text-muted">select Country</div>
+                            </div>
+                          </div>
+                          
+                         
+                       
                         
+                      </div>
+                      <div class="col-md-6 px-5">
+                        <!-- <div class="mb-4 row">
+                          <label for="image" class="col-md-3 col-sm-4 form-label">Image</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="file" class="form-control" id="image" name="image">
+                            <div class="form-text text-muted">Insert Image</div>
+                          </div>
+                        </div> -->
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">State Name</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert State Name">
+                            <div class="form-text text-muted">Insert State Name</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="row">
+                          <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
+                            
+                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save State</button>
+                         <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
+   
+                          </div>
+                        </div>
+                      </form>
+                  
+                      <!-- <form
+                        method="post"
+                        action="https://xitysites.onrender.com/directory/subcategory/create"
+                        enctype="multipart/form-data"
                       >
                         <div class="row">
                           <div class="col-md-6 px-5">
@@ -70,7 +118,7 @@
                               <label
                                 for="name"
                                 class="col-md-3 col-sm-4 form-label"
-                                >Country Name</label
+                                >Category Name</label
                               >
                               <div class="col-md-9 col-sm-8">
                                 <input
@@ -78,16 +126,33 @@
                                   class="form-control"
                                   id="name"
                                   name="name"
-                                  placeholder="Insert Country Name"
+                                  placeholder="Insert Category Name"
                                 />
                                 <div class="form-text text-muted">
-                                  Insert Country Name
+                                  Insert Category Name
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="col-md-6 px-5">
-                            
+                            <div class="mb-4 row">
+                              <label
+                                for="image"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Image</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="file"
+                                  class="form-control"
+                                  id="image"
+                                  name="image"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Image
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="row">
@@ -96,7 +161,7 @@
                           >
                             <button class="btn saveBtn my-2 mx-2" type="submit">
                               <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save
-                              Country
+                              Category
                             </button>
                             <button
                               class="btn cancelBtn my-2 mx-2"
@@ -107,7 +172,7 @@
                             </button>
                           </div>
                         </div>
-                      </form>
+                      </form> -->
                     </div>
                   </section>
                   <!-- end main-content section  -->

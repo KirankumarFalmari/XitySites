@@ -82,29 +82,37 @@
                           <tr>
                             <td>S.No</td>
                             <td>Listing Country</td>
+                            <td>Listing State</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <% var sno=1 %> <% data.forEach(function(country) { %>
+                          <% var sno=1 %> <% data.forEach(function(state) { %>
                           <tr>
                             <td><%= sno++ %></td>
+
+                            <% cdata.forEach(function(country){
+                            if(country._id==state.countryid){ %>
                             <td>
                               <h6 class="lis-name"><%= country.name %></h6>
+                            </td>
+                            <%} })%>
+                            <td>
+                              <h6 class="lis-name"><%= state.name %></h6>
                             </td>
 
                             <td>
                               <button class="listing-btn">
-                                <%= moment(country.created).format(
-                                'MMM-DD-YYYY') %>
+                                <%= moment(state.created).format( 'MMM-DD-YYYY')
+                                %>
                               </button>
                             </td>
 
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/edit/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/state/edit/<%= state._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -115,7 +123,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/delete/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/state/delete/<%= state._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -148,9 +156,10 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(`https://xitysites.onrender.com/master/country/search/${key}`)
+          .get(`https://xitysites.onrender.com/master/state/search/${key}`)
           .then(function (res) {
             var no = 0;
+            console.log(res.cdata);
             res.data.forEach(function (data) {
               no += 1;
               const idno = data._id;
@@ -158,6 +167,7 @@
               <tr>
                 <td id = "${idno}">${no} </td>
                   <td >${data.name}</td>
+                  
                   <td>
                               <button class="listing-btn">
                                 <%= moment(data.created).format(
@@ -166,7 +176,7 @@
                             </td>
                   <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/edit/${data._id}"
+                                href="https://xitysites.onrender.com/master/state/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -177,7 +187,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/delete/${data._id}"
+                                href="https://xitysites.onrender.com/master/state/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

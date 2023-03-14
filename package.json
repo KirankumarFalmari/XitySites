@@ -1,9 +1,9 @@
 {
   "name": "legal-dashboard",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,6 +24,22 @@
     "multer": "^1.4.5-lts.1",
     "node-datetime": "^2.1.2",
     "node-html-templates": "^1.0.4",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "webpack": "^5.76.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KirankumarFalmari/XitySites.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KirankumarFalmari/XitySites/issues"
+  },
+  "homepage": "https://github.com/KirankumarFalmari/XitySites#readme",
+  "description": "",
+  "devDependencies": {
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-middleware": "^6.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-hot-middleware": "^2.25.3"
   }
 }

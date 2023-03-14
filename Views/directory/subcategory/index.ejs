@@ -113,7 +113,7 @@
 
                             <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/edit/<%= subcategory._id%>"
+                                href="https://xitysites.onrender.com/directory/subcategory/edit/<%= subcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -124,7 +124,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/delete/<%= subcategory._id%>"
+                                href="https://xitysites.onrender.com/directory/subcategory/delete/<%= subcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -157,7 +157,9 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(`http://localhost:5000/directory/subcategory/search/${key}`)
+          .get(
+            `https://xitysites.onrender.com/directory/subcategory/search/${key}`
+          )
           .then(function (res) {
             var no = 0;
             console.log(res.cdata);
@@ -177,7 +179,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/edit/${data._id}"
+                                href="https://xitysites.onrender.com/directory/subcategory/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -188,7 +190,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/subcategory/delete/${data._id}"
+                                href="https://xitysites.onrender.com/directory/subcategory/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

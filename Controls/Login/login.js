@@ -17,7 +17,7 @@ route.get("/", (req, res) => {
     res.redirect("/directory/category/");
   } else {
     // res.sendFile(static_path + "login.ejs");
-    res.redirect(static_path + "/login");
+    res.redirect("/login");
   }
 });
 

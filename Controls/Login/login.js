@@ -10,14 +10,14 @@ route.use(express.json());
 route.use(bodyparser.json());
 route.use(bodyparser.urlencoded({ extended: true }));
 route.use(express.urlencoded({ extended: false }));
-// const static_path = path.join(__dirname, "../../Views/");
+const static_path = path.join(__dirname, "../../Views");
 
 route.get("/", (req, res) => {
   if (req.cookies.jwtoken) {
     res.redirect("/directory/category/");
   } else {
     // res.sendFile(static_path + "login.ejs");
-    res.redirect("/login");
+    res.redirect(static_path + "/login.ejs");
   }
 });
 

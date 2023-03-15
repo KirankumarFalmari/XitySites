@@ -4,7 +4,7 @@ const path = require("path");
 // const cookie = require("cookie-parser");
 require("../../Connection/connection");
 
-const Register = require("../../../Modules/bussiness-users/bussiness-user");
+const Register = require("../../Modules/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 
 route.use(express.json());

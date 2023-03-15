@@ -3,7 +3,7 @@ const route = express.Router();
 const path = require("path");
 const jwt = require("jsonwebtoken");
 require("../../Connection/connection");
-const Register = require("../../../Modules/bussiness-users/bussiness-user");
+const Register = require("../../Modules/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 
 route.use(express.json());

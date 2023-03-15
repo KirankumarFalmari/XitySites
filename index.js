@@ -20,8 +20,8 @@ dotenv.config();
 
 const auth = require("./Controller/auth/auth");
 const login = require("./Controller/Login/login");
-const bussinessuser = require("./Controller/Bussines-user/Bussiness-user");
-const bussinesslogin = require("./Controller/Bussines-user/bussiness-login");
+const bussinessuser = require("./Controller/dirctory/Bussines-user/Bussiness-user");
+const bussinesslogin = require("./Controller/dirctory/Bussines-user/bussiness-login");
 // const dashboard = require("./Controls/Dashboard/dashboard");
 
 app.use("/", login);
@@ -37,7 +37,7 @@ app.use("/bussiness-login", bussinesslogin);
 
 //Start Route
 const directoryroute = require("./route/directoryadmin");
-app.use("/directory", auth, directoryroute);
+app.use("/directory", directoryroute);
 //End Route
 
 //Start Route

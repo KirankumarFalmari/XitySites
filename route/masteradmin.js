@@ -10,8 +10,8 @@ const city = require("../Controller/master/CityController");
 const pincode = require("../Controller/master/PincodeController");
 
 app.use("/country", auth, country);
-app.use("/state", state);
-app.use("/city", city);
-app.use("/pincode", pincode);
+app.use("/state", auth, state);
+app.use("/city", auth, city);
+app.use("/pincode", auth, pincode);
 
 module.exports = app;

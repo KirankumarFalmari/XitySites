@@ -2,8 +2,8 @@ const express = require("express");
 const route = express.Router();
 const path = require("path");
 const jwt = require("jsonwebtoken");
-require("../../Connection/connection");
-const Register = require("../../Modules/bussiness-users/bussiness-user");
+require("../../../Connection/connection");
+const Register = require("../../../Modules/Directory/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 
 route.use(express.json());
@@ -12,9 +12,9 @@ route.use(bodyparser.urlencoded({ extended: true }));
 route.use(express.urlencoded({ extended: false }));
 const static_path = path.join(__dirname, "../../Views/");
 
-route.get("/", (req, res) => {
-  res.sendFile(static_path + "login.html");
-});
+// route.get("/", (req, res) => {
+//   res.sendFile(static_path + "login.html");
+// });
 
 route.post("/", async (req, res) => {
   //   jwt.verify(req.token, process.env.SECRET_KEY, (err, doc) => {

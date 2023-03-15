@@ -2,9 +2,9 @@ const express = require("express");
 const route = express.Router();
 const path = require("path");
 // const cookie = require("cookie-parser");
-require("../../Connection/connection");
+require("../../../Connection/connection");
 
-const Register = require("../../Modules/bussiness-users/bussiness-user");
+const Register = require("../../../Modules/Directory/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 
 route.use(express.json());
@@ -39,10 +39,10 @@ route.post(
 
   async (req, res) => {
     try {
-      const password = req.body.password;
+      // const password = req.body.password;
       const email = req.body.email;
 
-      const phoneno = req.body.phoneno;
+      // const phoneno = req.body.phoneno;
 
       const newUser = Register({
         fullname: req.body.fullname,
@@ -55,8 +55,13 @@ route.post(
       const userEmail = await Register.findOne({ email });
       const userPhone = await Register.findOne({ phoneno: req.body.phoneno });
 
-      //   console.log(userPhone);
-      if (userEmail || userPhone) {
+      //   console.log(userPhone);userPhone.phoneno
+      if (userEmail) {
+        return res.status(422).json({
+          success: "false",
+          error: "User already Exits ",
+        });
+      } else if (userPhone) {
         return res.status(422).json({
           success: "false",
           error: "User already Exits ",

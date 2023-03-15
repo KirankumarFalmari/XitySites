@@ -12,6 +12,7 @@ const ObjectId = require("mongodb").ObjectId;
 const country = require("../../Modules/Master/country");
 const state = require("../../Modules/Master/state");
 const city = require("../../Modules/Master/city");
+const pincode = require("../../Modules/Master/pincode");
 
 route.use(express.static(css_path));
 
@@ -119,7 +120,7 @@ route.post("/edit", async (req, res) => {
 
 route.get("/delete/:id", async (req, res) => {
   await city.findByIdAndDelete(req.params.id);
-  // await childcountry.deleteMany({ countryid: req.params.id });
+  await pincode.deleteMany({ cityid: req.params.id });
   res.redirect("/master/city");
 });
 

@@ -57,12 +57,16 @@ route.post(
 
       //   console.log(userPhone);
       if (userEmail || userPhone) {
-        return res.status(422).json({ error: "User already Exits " });
+        return res.status(422).json({
+          success: "false",
+          error: "User already Exits ",
+        });
       } else {
         const token = await newUser.generateAuthToken();
         //   console.log(token);
         res.cookie("jwtoken", token, { httpOnly: true });
         res.send({
+          success: "true",
           result: "user is created",
         });
         //   res.redirect("/");

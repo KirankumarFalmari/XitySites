@@ -68,7 +68,97 @@
                     </div> -->
 
                     <div class="table-section">
-                      <form
+                      <form method="post" action="http://localhost:5000/master/pincode/edit" >
+                        <div class="row">
+                          <div class="col-md-6 px-5">
+                          <div class="mb-4 row">
+                            <label for="unit" class="col-md-2 col-sm-4 form-label">select Country</label>
+                            <div class="col-md-8 col-sm-8">
+                              
+                             <select class="form-select" id="selectcountry" name="selectcountry" onfocusout="getdata(event)">
+                              <% cdata.forEach(function(country){
+                                if(pdata[0].countryid == country._id){ %>
+                                <option value="<%= country._id %>"><%= country.name %></option>
+                                 <% }}) %>
+                              <!-- <option value="">Select country</option> -->
+                                  <% cdata.forEach(function(category){ %>
+                                   <option value="<%= category._id %>"><%= category.name %></option>
+                                    <% }) %>
+                             </select>
+                         
+                              <div class="form-text text-muted">select country</div>
+                            </div>
+                          </div>
+                          <div class="mb-4 row">
+                            <label for="unit" class="col-md-2 col-sm-4 form-label">select state</label>
+                            <div class="col-md-8 col-sm-8">
+                              
+                             <select class="form-select" id="selectstate" name="selectstate" onfocusout="getcitydata(event)">
+                              <% sdata.forEach(function(state){
+                                if(pdata[0].stateid == state._id){ %>
+                                <option value="<%= state._id %>"><%= state.name %></option>
+                                 <% }}) %>
+                              
+                                 
+                             </select>
+                         
+                              <div class="form-text text-muted">select state</div>
+                            </div>
+                          </div>
+
+                          
+                         
+                       
+                        
+                      </div>
+                      <div class="col-md-6 px-5">
+                        
+                        <div class="mb-4 row">
+                          <label for="unit" class="col-md-2 col-sm-4 form-label">select City</label>
+                          <div class="col-md-8 col-sm-8">
+                            
+                           <select class="form-select" id="selectcity" name="selectcity" >
+                            <% data.forEach(function(city){
+                              if(pdata[0].cityid == city._id){ %>
+                              <option value="<%= city._id %>"><%= city.name %></option>
+                               <% }}) %>
+                            
+                                <!-- <% data.forEach(function(city){ %>
+                                 <option value="<%= city._id %>"><%= city.name %></option>
+                                  <% }) %> -->
+                           </select>
+                       
+                            <div class="form-text text-muted">select city</div>
+                          </div>
+                        </div>
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">Town Name</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert Town Name" value="<%=pdata[0].name%>">
+                            <div class="form-text text-muted">Insert Town Name</div>
+                          </div>
+                        </div>
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">pincodeno No</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="text" class="form-control" id="pincodeno" name="pincodeno" placeholder="Insert pincodeno Name"
+                            value="<%=pdata[0].pincodeno%>">
+                            <div class="form-text text-muted">Insert pincodeno Name</div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                        <div class="row">
+                          <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
+                            
+                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Pincode</button>
+                         <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
+   
+                          </div>
+                        </div>
+                      </form>
+                      <!-- <form
                         method="post"
                         action="http://localhost:5000/master/pincode/edit"
                         
@@ -84,7 +174,7 @@
                                   if(data[0].countryid == country._id){ %>
                                   <option value="<%= country._id %>"><%= country.name %></option>
                                    <% }}) %>
-                                   <!-- Helloooooo -->
+                                   
                                     <% cdata.forEach(function(country){ %>
                                      <option value="<%= country._id %>"><%= country.name %></option>
                                       <% }) %>
@@ -153,7 +243,7 @@
                             </button>
                           </div>
                         </div>
-                      </form>
+                      </form> -->
                       <!-- <form
                         method="post"
                         action=""

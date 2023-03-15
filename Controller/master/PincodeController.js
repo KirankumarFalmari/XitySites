@@ -44,16 +44,11 @@ route.get("/", async (req, res) => {
 // get data
 route.get("/citydata", async (req, res) => {
   const data = await city.find({});
-  // const data = state.find({ _id: req.params.id });
-  // res.json(data);
-  //   console.log(data);
+
   res.status(200).json(data);
 });
 route.get("/statedata", async (req, res) => {
   const data = await state.find({});
-  // const data = state.find({ _id: req.params.id });
-  // res.json(data);
-  //   console.log(data);
   res.status(200).json(data);
 });
 
@@ -88,40 +83,45 @@ route.post("/create", async (req, res) => {
 
 let id;
 //Edit List
-// route.get("/edit/:id", async (req, res) => {
-//   id = req.params.id;
-//   const cdata = await country.find({});
-//   const sdata = await state.find({});
-//   const data = await city.find({
-//     _id: new ObjectId(req.params.id.trim()),
-//   });
-//   // console.log(data);
-//   res.render("master/city/edit", {
-//     data: data,
-//     cdata: cdata,
-//     sdata: sdata,
-//     moment: moment,
-//   });
-// });
+route.get("/edit/:id", async (req, res) => {
+  id = req.params.id;
+  const cdata = await country.find({});
+  const sdata = await state.find({});
+  const data = await city.find({});
+  const pdata = await pincode.find({
+    _id: new ObjectId(req.params.id.trim()),
+  });
+  // console.log(data);
+  res.render("master/pincode/edit", {
+    data: data,
+    cdata: cdata,
+    pdata: pdata,
+    sdata: sdata,
+    moment: moment,
+  });
+});
 
 route.post("/edit", async (req, res) => {
   // console.log(req.body, id);
   try {
-    await city
+    await pincode
       .findOneAndUpdate(
         { _id: id },
         {
           $set: {
             countryid: req.body.selectcountry,
             stateid: req.body.selectstate,
+            cityid: req.body.selectcity,
             name: req.body.name,
+            pincodeno: req.body.pincodeno,
+            created: formatted,
             updated: formatted,
           },
         }
       )
       .then(() => {
         // res.sendFile(static_path + "edit.html");
-        res.redirect("/master/city");
+        res.redirect("/master/pincode");
       })
       .catch((err) => {
         console.log(err);
@@ -132,9 +132,9 @@ route.post("/edit", async (req, res) => {
 });
 
 route.get("/delete/:id", async (req, res) => {
-  await city.findByIdAndDelete(req.params.id);
+  await pincode.findByIdAndDelete(req.params.id);
   // await childcountry.deleteMany({ countryid: req.params.id });
-  res.redirect("/master/city");
+  res.redirect("/master/pincode");
 });
 
 module.exports = route;

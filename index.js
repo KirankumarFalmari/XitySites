@@ -25,6 +25,12 @@ const bussinesslogin = require("./Controller/Bussines-user/bussiness-login");
 // const dashboard = require("./Controls/Dashboard/dashboard");
 
 app.use("/", login);
+
+// api get dada Country state city pincode
+const api = require("./route/api");
+app.use("/api", api);
+
+// bussiness login and create api
 app.use("/bussiness-user", bussinessuser);
 app.use("/bussiness-login", bussinesslogin);
 // app.use("/dashboard", auth, dashboard);

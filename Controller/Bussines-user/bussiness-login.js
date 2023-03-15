@@ -34,12 +34,12 @@ route.post("/", async (req, res) => {
     });
     // req.body.phoneno == userPhone.phoneno ||
     // && userPhone === null
-    if (userEmail === null) {
-      res.send({
-        result: "user is not registered",
-      });
-      // console.log("user is not registered");
-    }
+    // if (userEmail === null) {
+    //   res.send({
+    //     result: "user is not registered",
+    //   });
+    //   // console.log("user is not registered");
+    // }
     // || userPhone.phoneno === phoneno
     if (userEmail.email === email) {
       if (otp === OTP) {
@@ -47,17 +47,20 @@ route.post("/", async (req, res) => {
         //   req.session.user = true;
         // res.redirect("/dashboard");
         res.send({
+          success: "true",
           result: "login successfully",
         });
         // }
       } else {
         res.send({
+          success: "false",
           result: "Wrong otp",
         });
         console.log("Wrong otp");
       }
     } else {
       res.send({
+        success: "false",
         result: "user is not registered",
       });
       console.log("user is not registered");

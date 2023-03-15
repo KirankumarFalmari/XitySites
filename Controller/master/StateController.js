@@ -12,6 +12,8 @@ route.use(express.static(css_path));
 
 const country = require("../../Modules/Master/country");
 const state = require("../../Modules/Master/state");
+const city = require("../../Modules/Master/city");
+const pincode = require("../../Modules/Master/pincode");
 
 var dt = dateTime.create();
 var formatted = dt.format("Y-m-d H:M:S");
@@ -96,7 +98,8 @@ route.post("/edit", async (req, res) => {
 
 route.get("/delete/:id", async (req, res) => {
   await state.findByIdAndDelete(req.params.id);
-  // await childcategory.deleteMany({ subcategoryid: req.params.id });
+  await city.deleteMany({ stateid: req.params.id });
+  await pincode.deleteMany({ stateid: req.params.id });
   res.redirect("/master/state");
 });
 

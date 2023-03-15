@@ -1,6 +1,6 @@
 //Other Class
 const express = require("express");
-const auth = require("../Controls/auth/auth");
+const auth = require("../Controller/auth/auth");
 const app = express.Router();
 
 //Define Controller

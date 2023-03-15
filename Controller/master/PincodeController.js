@@ -12,6 +12,7 @@ const ObjectId = require("mongodb").ObjectId;
 const country = require("../../Modules/Master/country");
 const state = require("../../Modules/Master/state");
 const city = require("../../Modules/Master/city");
+const pincode = require("../../Modules/Master/pincode");
 
 route.use(express.static(css_path));
 
@@ -23,11 +24,13 @@ route.get("/", async (req, res) => {
   const data = await city.find({});
   const cdata = await country.find({});
   const sdata = await state.find({});
+  const pdata = await pincode.find({});
 
-  res.render("master/city/index", {
+  res.render("master/pincode/index", {
     data: data,
     cdata: cdata,
     sdata: sdata,
+    pdata: pdata,
     moment: moment,
   });
 });
@@ -39,7 +42,14 @@ route.get("/", async (req, res) => {
 // });
 
 // get data
-route.get("/data", async (req, res) => {
+route.get("/citydata", async (req, res) => {
+  const data = await city.find({});
+  // const data = state.find({ _id: req.params.id });
+  // res.json(data);
+  //   console.log(data);
+  res.status(200).json(data);
+});
+route.get("/statedata", async (req, res) => {
   const data = await state.find({});
   // const data = state.find({ _id: req.params.id });
   // res.json(data);
@@ -51,44 +61,48 @@ route.get("/data", async (req, res) => {
 route.get("/create", async (req, res) => {
   const sdata = await state.find({});
   const cdata = await country.find({});
-  res.render("master/city/create", {
+  const data = await city.find({});
+  res.render("master/pincode/create", {
     sdata: sdata,
     cdata: cdata,
+    data: data,
     moment: moment,
   });
 });
 
 // Add country
 route.post("/create", async (req, res) => {
-  const data = city({
+  const data = pincode({
     countryid: req.body.selectcountry,
     stateid: req.body.selectstate,
+    cityid: req.body.selectcity,
     name: req.body.name,
+    pincodeno: req.body.pincodeno,
     created: formatted,
   });
 
   await data.save();
-  res.redirect("/master/city");
+  res.redirect("/master/pincode");
   // }
 });
 
 let id;
 //Edit List
-route.get("/edit/:id", async (req, res) => {
-  id = req.params.id;
-  const cdata = await country.find({});
-  const sdata = await state.find({});
-  const data = await city.find({
-    _id: new ObjectId(req.params.id.trim()),
-  });
-  // console.log(data);
-  res.render("master/city/edit", {
-    data: data,
-    cdata: cdata,
-    sdata: sdata,
-    moment: moment,
-  });
-});
+// route.get("/edit/:id", async (req, res) => {
+//   id = req.params.id;
+//   const cdata = await country.find({});
+//   const sdata = await state.find({});
+//   const data = await city.find({
+//     _id: new ObjectId(req.params.id.trim()),
+//   });
+//   // console.log(data);
+//   res.render("master/city/edit", {
+//     data: data,
+//     cdata: cdata,
+//     sdata: sdata,
+//     moment: moment,
+//   });
+// });
 
 route.post("/edit", async (req, res) => {
   // console.log(req.body, id);

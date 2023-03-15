@@ -40,7 +40,7 @@
                                 /></a>
                               </li>
                               <li class="breadcrumb-item">
-                                <a class="bread-menu" href="https://xitysites.onrender.com/master/city">City List</a>
+                                <a class="bread-menu" href="http://localhost:5000/master/city">City List</a>
                               </li>
                               <li class="breadcrumb-item" aria-current="page">
                                 <a class="bread-menu" href="#">Add Category</a>
@@ -70,7 +70,7 @@
                     <div class="table-section">
                       <form
                         method="post"
-                        action="https://xitysites.onrender.com/master/city/edit"
+                        action="http://localhost:5000/master/city/edit"
                         
                       >
                         <div class="row">
@@ -79,14 +79,14 @@
                               <label for="unit" class="col-md-2 col-sm-4 form-label">select Country</label>
                               <div class="col-md-8 col-sm-8">
                                 
-                               <select class="form-select" id="selectcategory" name="selectcategory"  onfocusout="getdata(event)">
-                                <% cdata.forEach(function(category){
-                                  if(data[0].countryid == category._id){ %>
-                                  <option value="<%= category._id %>"><%= category.name %></option>
+                               <select class="form-select" id="selectcountry" name="selectcountry"  onfocusout="getdata(event)">
+                                <% cdata.forEach(function(country){
+                                  if(data[0].countryid == country._id){ %>
+                                  <option value="<%= country._id %>"><%= country.name %></option>
                                    <% }}) %>
                                    <!-- Helloooooo -->
-                                    <% cdata.forEach(function(category){ %>
-                                     <option value="<%= category._id %>"><%= category.name %></option>
+                                    <% cdata.forEach(function(country){ %>
+                                     <option value="<%= country._id %>"><%= country.name %></option>
                                       <% }) %>
                                </select>
                            
@@ -98,7 +98,7 @@
                               <label for="unit" class="col-md-2 col-sm-4 form-label">select State</label>
                               <div class="col-md-8 col-sm-8">
                                 
-                               <select class="form-select" id="selectsubcategory" name="selectsubcategory">
+                               <select class="form-select" id="selectstate" name="selectstate">
                                 <% sdata.forEach(function(category){
                                   if(data[0].stateid == category._id){ %>
                                   <option value="<%= category._id %>"><%= category.name %></option>
@@ -209,11 +209,11 @@
     <script>
       function getdata(event){
       //  event.preventDefault()  
-      const name = document.getElementById("selectcategory").value;
+      const name = document.getElementById("selectcountry").value;
       // console.log();
       
       var htmldata="";
-       axios.get("https://xitysites.onrender.com/master/city/data")
+       axios.get("http://localhost:5000/master/city/data")
        .then(function(res){
       
         res.data.forEach(function(data){
@@ -224,7 +224,7 @@
           `;
           }
         })
-        document.getElementById("selectsubcategory").innerHTML=htmldata;
+        document.getElementById("selectstate").innerHTML=htmldata;
       })
       }
         </script>

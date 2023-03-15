@@ -104,7 +104,7 @@
 
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/edit/<%= country._id%>"
+                                href="http://localhost:5000/master/country/edit/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -115,7 +115,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/delete/<%= country._id%>"
+                                href="http://localhost:5000/master/country/delete/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -148,7 +148,7 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(`https://xitysites.onrender.com/master/country/search/${key}`)
+          .get(`http://localhost:5000/master/country/search/${key}`)
           .then(function (res) {
             var no = 0;
             res.data.forEach(function (data) {
@@ -166,7 +166,7 @@
                             </td>
                   <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/edit/${data._id}"
+                                href="http://localhost:5000/master/country/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -177,7 +177,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/master/country/delete/${data._id}"
+                                href="http://localhost:5000/master/country/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

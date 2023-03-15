@@ -21,9 +21,9 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="bread-sec1">
-                          <h6 class="title">Add Childcategory</h6>
+                          <h6 class="title">Add Pincode</h6>
                           <p class="sub-cont">
-                            <!-- Lorem Ipsum is simply dummy text of the printing -->
+                            <
                           </p>
                         </div>
                       </div>
@@ -42,12 +42,12 @@
                               <li class="breadcrumb-item">
                                 <a
                                   class="bread-menu"
-                                  href="http://localhost:5000/master/city"
-                                  >City List</a
+                                  href="http://localhost:5000/master/pincode"
+                                  >Pincode List</a
                                 >
                               </li>
                               <li class="breadcrumb-item" aria-current="page">
-                                <a class="bread-menu" href="#">Add City</a>
+                                <a class="bread-menu" href="#">Add Pincode</a>
                               </li>
                             </ol>
                           </nav>
@@ -58,7 +58,7 @@
                   <section class="main-content">
                   
                     <div class="table-section">
-                      <form method="post" action="http://localhost:5000/master/city/create" >
+                      <form method="post" action="http://localhost:5000/master/pincode/create" >
                         <div class="row">
                           <div class="col-md-6 px-5">
                           <div class="mb-4 row">
@@ -67,8 +67,8 @@
                               
                              <select class="form-select" id="selectcountry" name="selectcountry" onfocusout="getdata(event)">
                               <option value="">Select country</option>
-                                  <% cdata.forEach(function(country){ %>
-                                   <option value="<%= country._id %>"><%= country.name %></option>
+                                  <% cdata.forEach(function(category){ %>
+                                   <option value="<%= category._id %>"><%= category.name %></option>
                                     <% }) %>
                              </select>
                          
@@ -79,59 +79,48 @@
                             <label for="unit" class="col-md-2 col-sm-4 form-label">select state</label>
                             <div class="col-md-8 col-sm-8">
                               
-                             <select class="form-select" id="selectstate" name="selectstate">
+                             <select class="form-select" id="selectstate" name="selectstate" onfocusout="getcitydata(event)">
                               <option value="">Select state</option>
-                                  <!-- <% sdata.forEach(function(category){ %>
-                                   <option value="<%= category._id %>"><%= category.name %></option>
-                                    <% }) %> -->
+                                 
                              </select>
                          
                               <div class="form-text text-muted">select state</div>
                             </div>
                           </div>
 
-                          <script>
-                            function getdata(event){
-                            //  event.preventDefault()  
-                            const name = document.getElementById("selectcountry").value;
-                            // console.log();
-                            
-                            var htmldata="";
-                             axios.get("http://localhost:5000/master/city/data")
-                             .then(function(res){
-                            
-                              res.data.forEach(function(data){
-                               
-                                if(name===data.countryid){
-                                htmldata+=`
-                                <option value="${data._id}">${data.name}</option>
-                                `;
-                                }
-                              })
-                              
-                              document.getElementById("selectstate").innerHTML=htmldata;
-                            })
-                            }
-                              </script>
                           
-                          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
                          
                        
                         
                       </div>
                       <div class="col-md-6 px-5">
-                        <!-- <div class="mb-4 row">
-                          <label for="image" class="col-md-3 col-sm-4 form-label">Image</label>
-                          <div class="col-md-9 col-sm-8">
-                            <input type="file" class="form-control" id="image" name="image">
-                            <div class="form-text text-muted">Insert Image</div>
-                          </div>
-                        </div> -->
+                        
                         <div class="mb-4 row">
-                          <label for="name" class="col-md-3 col-sm-4 form-label">City Name</label>
+                          <label for="unit" class="col-md-2 col-sm-4 form-label">select City</label>
+                          <div class="col-md-8 col-sm-8">
+                            
+                           <select class="form-select" id="selectcity" name="selectcity" >
+                            <option value="">Select City</option>
+                                <!-- <% data.forEach(function(city){ %>
+                                 <option value="<%= city._id %>"><%= city.name %></option>
+                                  <% }) %> -->
+                           </select>
+                       
+                            <div class="form-text text-muted">select city</div>
+                          </div>
+                        </div>
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">Town Name</label>
                           <div class="col-md-9 col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert Subategory Name">
-                            <div class="form-text text-muted">Insert City Name</div>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert Town Name">
+                            <div class="form-text text-muted">Insert Town Name</div>
+                          </div>
+                        </div>
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">pincodeno No</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="text" class="form-control" id="pincodeno" name="pincodeno" placeholder="Insert pincodeno Name">
+                            <div class="form-text text-muted">Insert pincodeno Name</div>
                           </div>
                         </div>
                         
@@ -140,13 +129,14 @@
                         <div class="row">
                           <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
                             
-                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save City</button>
+                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Pincode</button>
                          <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
    
                           </div>
                         </div>
                       </form>
                   
+                      
                     </div>
                   </section>
                   <!-- end main-content section  -->
@@ -160,5 +150,52 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+    <script>
+      function getdata(event){
+      //  event.preventDefault()  
+      const name = document.getElementById("selectcountry").value;
+      // console.log();
+      
+      var htmldata="";
+       axios.get("http://localhost:5000/master/pincode/statedata")
+       .then(function(res){
+      
+        res.data.forEach(function(data){
+         
+          if(name===data.countryid){
+          htmldata+=`
+          <option value="${data._id}">${data.name}</option>
+          `;
+          }
+        })
+        
+        document.getElementById("selectstate").innerHTML=htmldata;
+        // getcitydata(event)
+      })
+      }
+      function getcitydata(event){
+      //  event.preventDefault()  
+      const name = document.getElementById("selectstate").value;
+      // console.log();
+      
+      var htmldata="";
+       axios.get("http://localhost:5000/master/pincode/citydata")
+       .then(function(res){
+        
+        res.data.forEach(function(data){
+         
+          if(name===data.stateid){
+          htmldata+=`
+          <option value="${data._id}">${data.name}</option>
+          `;
+          }
+        })
+        
+        document.getElementById("selectcity").innerHTML=htmldata;
+      })
+      }
+        </script>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>

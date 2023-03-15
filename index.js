@@ -18,29 +18,25 @@ app.use(express.static(css_path));
 
 dotenv.config();
 
-const auth = require("./Controls/auth/auth");
-const login = require("./Controls/Login/login");
-// const bussinessuser = require("./Controls/Bussines-user/Bussiness-user");
-// const bussinesslogin = require("./Controls/Bussines-user/bussiness-login");
+const auth = require("./Controller/auth/auth");
+const login = require("./Controller/Login/login");
+const bussinessuser = require("./Controller/Bussines-user/Bussiness-user");
+const bussinesslogin = require("./Controller/Bussines-user/bussiness-login");
 // const dashboard = require("./Controls/Dashboard/dashboard");
-// const registrationControl = require("./Controls/Admin-user/Admin-user");
 
 app.use("/", login);
-// app.use("/bussiness-user", bussinessuser);
-// app.use("/bussiness-login", bussinesslogin);
-
+app.use("/bussiness-user", bussinessuser);
+app.use("/bussiness-login", bussinesslogin);
 // app.use("/dashboard", auth, dashboard);
-
-// app.use("/create", registrationControl);
 
 //Start Route
 const directoryroute = require("./route/directoryadmin");
-app.use("/directory", directoryroute);
+app.use("/directory", auth, directoryroute);
 //End Route
 
 //Start Route
 const masterroute = require("./route/masteradmin");
-app.use("/master", masterroute);
+app.use("/master", auth, masterroute);
 //End Route
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

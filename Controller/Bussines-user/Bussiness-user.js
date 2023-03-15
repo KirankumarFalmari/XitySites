@@ -2,7 +2,8 @@ const express = require("express");
 const route = express.Router();
 const path = require("path");
 // const cookie = require("cookie-parser");
-require("../../../Connection/connection");
+require("../../Connection/connection");
+
 const Register = require("../../../Modules/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 

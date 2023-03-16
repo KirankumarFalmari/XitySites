@@ -4,32 +4,29 @@ const path = require("path");
 const bodyparser = require("body-parser");
 var dateTime = require("node-datetime");
 const ObjectId = require("mongodb").ObjectId;
-
 require("../Connection/connection");
 
-const country = require("../Modules/Master/country");
-const state = require("../Modules/Master/state");
-const city = require("../Modules/Master/city");
-const pincode = require("../Modules/Master/pincode");
+//Call MasterController
+const master = require("../Controller/api/MasterController");
 
-route.get("/countrydata", async (req, res) => {
-  const data = await country.find({});
-  res.send(data);
+//Api Call for state
+route.get("/state", async (req, res) => {
+  master.getState(res);
 });
 
-route.get("/statedata", async (req, res) => {
-  const data = await state.find({});
-  res.send(data);
+//Api Call for city
+route.get("/city", async (req, res) => {
+  master.getCity(res);
 });
 
-route.get("/citydata", async (req, res) => {
-  const data = await city.find({});
-  res.send(data);
+//Api Call for country
+route.get("/country", async (req, res) => {
+  master.getCountry(res);
 });
 
-route.get("/pincodedata", async (req, res) => {
-  const data = await pincode.find({});
-  res.send(data);
+//Api Call for pincode
+route.get("/pincode", async (req, res) => {
+  master.getPincode(res);
 });
 
 module.exports = route;

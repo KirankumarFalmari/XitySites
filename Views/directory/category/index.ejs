@@ -105,7 +105,7 @@
 
                             <td>
                               <a
-                                href="http://localhost:5000/directory/category/edit/<%= category._id%>"
+                                href="https://xitysites.onrender.com/directory/category/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -116,7 +116,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/category/delete/<%= category._id%>"
+                                href="https://xitysites.onrender.com/directory/category/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -149,7 +149,9 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(`http://localhost:5000/directory/category/search/${key}`)
+          .get(
+            `https://xitysites.onrender.com/directory/category/search/${key}`
+          )
           .then(function (res) {
             var no = 0;
             res.data.forEach(function (data) {
@@ -167,7 +169,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://localhost:5000/directory/category/edit/${data._id}"
+                                href="https://xitysites.onrender.com/directory/category/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -178,7 +180,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/directory/category/delete/${data._id}"
+                                href="https://xitysites.onrender.com/directory/category/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

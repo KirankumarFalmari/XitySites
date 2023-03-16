@@ -25,14 +25,10 @@ const registerSchema = new mongoose.Schema({
     // required: true,
     default: true,
   },
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  token: {
+    type: String,
+    required: true,
+  },
 });
 
 registerSchema.pre("save", async function (next) {
@@ -45,7 +41,7 @@ registerSchema.pre("save", async function (next) {
 registerSchema.methods.generateAuthToken = async function () {
   try {
     let token = jwt.sign({ _id: this._id }, process.env.SECRET_KEY);
-    this.tokens = await this.tokens.concat({ token: token });
+    this.token = token;
     await this.save();
     return token;
   } catch (err) {
@@ -53,5 +49,5 @@ registerSchema.methods.generateAuthToken = async function () {
   }
 };
 
-const Register = new mongoose.model("Bussiness-user", registerSchema);
+const Register = mongoose.model("Bussiness-user", registerSchema);
 module.exports = Register;

@@ -1,6 +1,7 @@
 //Other Class
 const express = require("express");
 const auth = require("../Controller/auth/auth");
+const verify = require("../Controller/auth/verifyToken");
 const app = express.Router();
 
 //Define Controller
@@ -11,9 +12,9 @@ const bussinessuser = require("../Controller/dirctory/Bussines-user/Bussiness-us
 const getinvite = require("../Controller/dirctory/getInvite/GetInviteController");
 const getcontact = require("../Controller/dirctory/getcontact/GetContactController");
 
-app.use("/category", auth, category);
-app.use("/subcategory", auth, subcategory);
-app.use("/childcategory", auth, childcategory);
+app.use("/category", verify, category);
+app.use("/subcategory", verify, subcategory);
+app.use("/childcategory", verify, childcategory);
 app.use("/bussiness-user", bussinessuser);
 app.use("/getinvite", getinvite);
 app.use("/getcontact", getcontact);

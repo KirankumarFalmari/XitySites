@@ -1,7 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const path = require("path");
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 require("../../Connection/connection");
 const Register = require("../../Modules/Admin-users/admin-users");
 const bodyparser = require("body-parser");
@@ -45,7 +45,22 @@ route.post("/", async (req, res) => {
       if (otp === OTP) {
         if (pincode === userLogin.pincode) {
           //   req.session.user = true;
-          const token = String(userLogin.tokens[0].token);
+
+          // const user = await Register.findOne({ phoneno: req.body.pno });
+
+          // Create token
+          const token = jwt.sign(
+            { user_id: userLogin._id },
+            process.env.SECRET_KEY,
+            {
+              expiresIn: "2h",
+            }
+          );
+          userLogin.token = token;
+
+          // console.log(userLogin);
+
+          // const token = String(userLogin.token);
 
           res.cookie("jwtoken", token, { httpOnly: true });
           res.redirect("/directory/category/");

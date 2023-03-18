@@ -5,6 +5,8 @@ const jwt = require("jsonwebtoken");
 require("../../../Connection/connection");
 const Register = require("../../../Modules/Directory/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
+// const master = require("../../api/MasterController");
+const base = require("../../api/BaseController");
 
 route.use(express.json());
 route.use(bodyparser.json());
@@ -17,28 +19,28 @@ const static_path = path.join(__dirname, "../../Views/");
 // });
 
 route.post("/", async (req, res) => {
-  // Find user by email
-  const OTP = 111111;
-  const otp1 = req.body.otp1;
-  const otp = Number(otp1);
+  try {
+    // Find user by email
+    const OTP = 111111;
+    const otp1 = req.body.otp1;
+    const otp = Number(otp1);
+    const user = await Register.find({ email: req.body.email });
+    // If user not found or password is incorrect, return error response
+    if (user.length == 0) {
+      res.send(base.sendError("User Not Exists"));
+    }
+    if (OTP === otp) {
+      const token = jwt.sign({ _id: user[0]._id }, process.env.SECRET_KEY, {
+        expiresIn: "1h",
+      });
+      user[0].token = token;
+      res.send(base.sendResponse(token, "login Successfully"));
 
-  const user = await Register.find({ email: req.body.email });
-
-  // If user not found or password is incorrect, return error response
-  if (user.length == 0) {
-    return res.status(401).json({ message: "user is not exist" });
-  }
-  // console.log(user);
-
-  if (user[0].email !== req.body.email) {
-    return res.status(401).json({ message: "Incorrect email" });
-  }
-
-  const token = jwt.sign({ _id: user[0]._id }, process.env.SECRET_KEY, {
-    expiresIn: "1h",
-  });
-  user[0].token = token;
-  res.json({ succes: "true", token });
+      // master.UserLogin(res, token);
+    } else {
+      res.send(base.sendError("Invalid OTP"));
+    }
+  } catch (err) {}
 });
 
 // route.post("/", async (req, res) => {

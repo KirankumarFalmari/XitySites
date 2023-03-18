@@ -1,9 +1,8 @@
 const express = require("express");
 const route = express.Router();
 const path = require("path");
-// const cookie = require("cookie-parser");
 require("../../../Connection/connection");
-
+const master = require("../../api/MasterController");
 const Register = require("../../../Modules/Directory/bussiness-users/bussiness-user");
 const bodyparser = require("body-parser");
 
@@ -55,32 +54,19 @@ route.post(
       const userEmail = await Register.findOne({ email });
       const userPhone = await Register.findOne({ phoneno: req.body.phoneno });
 
-      //   console.log(userPhone);userPhone.phoneno
       if (userEmail) {
-        return res.status(422).json({
-          success: "false",
-          error: "User already Exits ",
-        });
+        master.UserExist(res);
       } else if (userPhone) {
-        return res.status(422).json({
-          success: "false",
-          error: "User already Exits ",
-        });
+        master.UserExist(res);
       } else {
         const token = await newUser.generateAuthToken();
-        //   console.log(token);
         res.cookie("jwtoken", token, { httpOnly: true });
-        res.send({
-          success: "true",
-          result: "user is created",
-        });
-        //   res.redirect("/");
+        master.UserCreated(res, token);
       }
     } catch (error) {
       console.log(error);
     }
   }
-  //   }
 );
 
 module.exports = route;

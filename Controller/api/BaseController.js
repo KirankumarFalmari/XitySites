@@ -13,11 +13,6 @@ class BaseController {
       success: false,
       message: error,
     };
-
-    // if (errorMessages.isEmpty()) {
-    //   response.data = errorMessages;
-    // }
-
     return response;
   }
 }

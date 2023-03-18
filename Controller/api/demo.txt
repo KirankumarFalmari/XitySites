@@ -33,3 +33,31 @@ route.get("/pincodedata", async (req, res) => {
 });
 
 module.exports = route;
+
+--------------------------------------------------------------------------------------------------
+OTP Varification
+
+const { exec } = require('child_process');
+
+const accountSid = 'your_twilio_account_sid';
+const authToken = 'your_twilio_auth_token';
+const fromNumber = 'your_twilio_phone_number';
+const toNumber = 'recipient_phone_number';
+const message = 'This is a test message sent from Twilio!';
+
+const curlCmd = `curl -XPOST https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-u ${accountSid}:${authToken} \
+--data-urlencode 'From=${fromNumber}' \
+--data-urlencode 'To=${toNumber}' \
+--data-urlencode 'Body=${message}'`;
+
+exec(curlCmd, (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  console.log(`stdout: ${stdout}`);
+  console.error(`stderr: ${stderr}`);
+});
+

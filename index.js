@@ -6,9 +6,13 @@ const path = require("path");
 const cookie = require("cookie-parser");
 require("./Connection/connection");
 const app = express();
-app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
+app.use(
+  bodyparser.urlencoded({
+    extended: true,
+  })
+);
 app.use(cookie());
 app.use(express.json());
 app.set("view engine", "ejs");
@@ -42,7 +46,7 @@ app.use("/directory", directoryroute);
 
 //Start Route
 const masterroute = require("./route/masteradmin");
-app.use("/master", auth, masterroute);
+app.use("/master", masterroute);
 //End Route
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -47,6 +47,7 @@ const userRegister = async (req, res) => {
     if (mailExist.length === 0) {
       if (password === cpassword) {
         const newUser = Register({
+          fullname: req.body.fullname,
           username: req.body.username,
           pincode: req.body.pincode,
           email: emailid,

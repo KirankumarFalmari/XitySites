@@ -20,9 +20,6 @@ const userRegister = async (req, res) => {
     const emailid = req.body.email;
     const phoneno = req.body.pno;
 
-    if (password != cpassword) {
-      res.send(base.sendError("Conform Password and password not match"));
-    }
     if (emailid == null || emailid == "") {
       res.send(base.sendError("Email Is Require"));
     }
@@ -44,8 +41,7 @@ const userRegister = async (req, res) => {
       res.send(base.sendError("User Phone no Already Exit"));
     }
 
-    if (mailExist.length === 0) {
-      // if (password === cpassword) {
+    if (mailExist.length === 0 || phonenoExist.length === 0) {
       const newUser = Register({
         fullname: req.body.fullname,
         username: req.body.username,
@@ -54,13 +50,12 @@ const userRegister = async (req, res) => {
         phoneno: phoneno,
         password: password,
       });
+
       await newUser.generateAuthToken();
-      // res.cookie("jwtoken", token, { httpOnly: true });
       var detailuser = {
         user: newUser,
       };
       res.send(base.sendResponse(detailuser, "User List detail"));
-      // }
     }
   } catch (err) {}
 };

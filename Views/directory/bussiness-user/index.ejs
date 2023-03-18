@@ -126,7 +126,9 @@
         let key = document.getElementById("search").value;
         var htmldata = "";
         axios
-          .get(`http://localhost:5000/directory/bussiness-user/search/${key}`)
+          .get(
+            `https://xitysites.onrender.com/directory/bussiness-user/search/${key}`
+          )
           .then(function (res) {
             var no = 0;
             res.data.forEach(function (data) {

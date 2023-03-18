@@ -16,7 +16,7 @@ const response = (user, res) => {
 const userRegister = async (req, res) => {
   try {
     const password = req.body.pwd;
-    const cpassword = req.body.cpwd;
+    // const cpassword = req.body.cpwd;
     const emailid = req.body.email;
     const phoneno = req.body.pno;
 
@@ -45,22 +45,22 @@ const userRegister = async (req, res) => {
     }
 
     if (mailExist.length === 0) {
-      if (password === cpassword) {
-        const newUser = Register({
-          fullname: req.body.fullname,
-          username: req.body.username,
-          pincode: req.body.pincode,
-          email: emailid,
-          phoneno: phoneno,
-          password: password,
-        });
-        await newUser.generateAuthToken();
-        // res.cookie("jwtoken", token, { httpOnly: true });
-        var detailuser = {
-          user: newUser,
-        };
-        res.send(base.sendResponse(detailuser, "User List detail"));
-      }
+      // if (password === cpassword) {
+      const newUser = Register({
+        fullname: req.body.fullname,
+        username: req.body.username,
+        pincode: req.body.pincode,
+        email: emailid,
+        phoneno: phoneno,
+        password: password,
+      });
+      await newUser.generateAuthToken();
+      // res.cookie("jwtoken", token, { httpOnly: true });
+      var detailuser = {
+        user: newUser,
+      };
+      res.send(base.sendResponse(detailuser, "User List detail"));
+      // }
     }
   } catch (err) {}
 };

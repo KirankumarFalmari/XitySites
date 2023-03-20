@@ -10,6 +10,7 @@ const moment = require("moment");
 const ObjectId = require("mongodb").ObjectId;
 // route.use(express.static(moment));
 const multer = require("multer");
+const base = require("../../api/BaseController");
 const getContact = require("../../../Modules/Directory/getContact/getcontact");
 
 const temp = path.join(__dirname, "../../upload/getContact/");
@@ -61,15 +62,9 @@ route.post("/", upload.single("image"), async (req, res) => {
     let result = await data.save();
 
     if (result) {
-      res.json({
-        success: "true",
-        error: "Data Inserted",
-      });
+      res.send(base.sendResponse(data, "Data Inserted"));
     } else {
-      res.json({
-        success: "false",
-        error: "Data not inserted",
-      });
+      res.send(base.sendError("Data not inserted"));
     }
   } catch (err) {
     console.log(err);

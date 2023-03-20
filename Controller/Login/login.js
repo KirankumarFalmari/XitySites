@@ -96,9 +96,17 @@ route.post(
           password: req.body.pwd,
         });
 
-        const userExist = await Register.findOne({ email, phoneno });
-        if (userExist) {
-          return res.status(422).json({ error: "User already Exits " });
+        const userEmail = await Register.find({
+          email: email,
+        });
+        const userPhone = await Register.find({
+          phoneno: phoneno,
+        });
+
+        if (userEmail.length !== 0 || userPhone.length !== 0) {
+          return res
+            .status(422)
+            .json({ error: "User already Exits please login" });
         } else {
           const token = await newUser.generateAuthToken();
           //   console.log(token);

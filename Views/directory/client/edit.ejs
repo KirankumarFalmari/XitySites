@@ -21,7 +21,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="bread-sec1">
-                          <h6 class="title">Edit Subcategory</h6>
+                          <h6 class="title">Add Category</h6>
                           <p class="sub-cont">
                             <!-- Lorem Ipsum is simply dummy text of the printing -->
                           </p>
@@ -40,7 +40,7 @@
                                 /></a>
                               </li>
                               <li class="breadcrumb-item">
-                                <a class="bread-menu" href="http://xitysiteadmin.profcymadev.in/master/state">state List</a>
+                                <a class="bread-menu" href="http://xitysiteadmin.profcymadev.in/directory/category">Category List</a>
                               </li>
                               <li class="breadcrumb-item" aria-current="page">
                                 <a class="bread-menu" href="#">Add Category</a>
@@ -68,62 +68,9 @@
                     </div> -->
 
                     <div class="table-section">
-                      <form method="post" action="http://xitysiteadmin.profcymadev.in/master/state/edit" >
-                        <div class="row">
-                          <div class="col-md-6 px-5">
-                          <div class="mb-4 row">
-                            <label for="unit" class="col-md-2 col-sm-4 form-label">select Category</label>
-                            <div class="col-md-8 col-sm-8">
-                              
-                             <select class="form-select" id="selectcategory" name="selectcategory">
-                              <% cdata.forEach(function(category){
-                                if(data[0].categoryid == category._id){ %>
-                                <option value="<%= category._id %>"><%= category.name %></option>
-                                 <% }}) %>
-                                 <!-- Helloooooo -->
-                                  <% cdata.forEach(function(category){ %>
-                                   <option value="<%= category._id %>"><%= category.name %></option>
-                                    <% }) %>
-                             </select>
-                         
-                              <div class="form-text text-muted">select category</div>
-                            </div>
-                          </div>
-                          
-                         
-                       
-                        
-                      </div>
-                       <div class="col-md-6 px-5">
-                        <div class="mb-4 row">
-                          <label for="name" class="col-md-3 col-sm-4 form-label">Update Subcategory Name</label>
-                          <div class="col-md-9 col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert Subategory Name" value="<%= data[0].name%>" >
-                            <div class="form-text text-muted">Update Subategory Name</div>
-                          </div>
-                        </div>
-                       <!-- <div class="mb-4 row">
-                          <label for="image" class="col-md-3 col-sm-4 form-label">Image</label>
-                          <div class="col-md-9 col-sm-8">
-                            <input type="file" class="form-control" id="image" name="image">
-                            <div class="form-text text-muted">Insert Image</div>
-                          </div>
-                        </div>-->
-                        
-                      </div> 
-                    </div>
-                        <div class="row">
-                          <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
-                            
-                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save subcategory</button>
-                         <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
-   
-                          </div>
-                        </div>
-                      </form>
-                      <!-- <form
+                      <form
                         method="post"
-                        action="http://xitysiteadmin.profcymadev.in/directory/subcategory/edit"
+                        action="http://xitysiteadmin.profcymadev.in/directory/client/edit"
                         
                       >
                         <div class="row">
@@ -132,7 +79,7 @@
                               <label
                                 for="name"
                                 class="col-md-3 col-sm-4 form-label"
-                                >Edit Subcategory Name</label
+                                >Edit Category Name</label
                               >
                               <div class="col-md-9 col-sm-8">
                                 <input
@@ -144,7 +91,7 @@
                                   placeholder="Edit Category Name"
                                 />
                                 <div class="form-text text-muted">
-                                  Edit Subcategory Name
+                                  Edit Category Name
                                 </div>
                               </div>
                             </div>
@@ -157,7 +104,7 @@
                           >
                             <button class="btn saveBtn my-2 mx-2" type="submit">
                               <i class="fa-solid fa-floppy-disk"></i>&nbsp;Update
-                              Subcategory
+                              Category
                             </button>
                             <button
                               class="btn cancelBtn my-2 mx-2"
@@ -168,43 +115,8 @@
                             </button>
                           </div>
                         </div>
-                      </form> -->
-                      <!-- <form
-                        method="post"
-                        action=""
-                        class="addsstatus"
-                        autocomplete="off"
-                        enctype="multipart/form-data"
-                      >
-                      
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <label class="form-label" for="p_image">Edit Category Name</label>
-                            <input
-                              type="text"
-                              class="form-control input-mandatory"
-                              id="p_image"
-                              name="image"
-                              value="<%= data[0].name %>"
-                              placeholder="Category Name"
-                            />
-                          </div>
-                          <br/>
-                          
-                        </div>
-                      
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <button
-                              type="submit"
-                              style="float: right"
-                              class="btn btn-info px-5"
-                            >
-                              Save
-                            </button>
-                          </div>
-                        </div>
-                      </form> -->
+                      </form>
+                     
                     </div>
                   </section>
                   <!-- end main-content section  -->

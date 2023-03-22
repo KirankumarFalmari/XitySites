@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
 
-const Testimonial = mongoose.Schema({
+const client = mongoose.Schema({
   name: {
-    type: String,
-    required: true,
-  },
-  bussinesname: {
     type: String,
     required: true,
   },
@@ -13,12 +9,6 @@ const Testimonial = mongoose.Schema({
     // required: true,
     default: "None",
     type: String,
-  },
-  content: {
-    type: String,
-  },
-  rating: {
-    type: Number,
   },
   created: {
     type: Date,
@@ -31,6 +21,6 @@ const Testimonial = mongoose.Schema({
   },
 });
 
-const collection = mongoose.model("testimonial", Testimonial);
+const collection = mongoose.model("client", client);
 
 module.exports = collection;

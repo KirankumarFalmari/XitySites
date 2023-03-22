@@ -43,7 +43,7 @@
                                 <a href="#"
                                   ><img
                                     class="bread-home"
-                                    src="assets2/img/icons/bread-home.png"
+                                    src="/assets2/img/icons/bread-home.png"
                                     alt=""
                                 /></a>
                               </li>
@@ -81,73 +81,46 @@
                         <thead>
                           <tr>
                             <td>S.No</td>
-                            <td>Listing Country</td>
-                            <td>Listing State</td>
-                            <td>Listing City</td>
-                            <td>Listing Town</td>
-                            <td>Listing Pincode</td>
+                            <td>Listing Client</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
                         </thead>
                         <tbody id="tbody">
-                          <% var sno=1 %> <% pdata.forEach(function(pincode) {
+                          <% var sno=1 %> <% data.forEach(function(category) {
                           %>
                           <tr>
                             <td><%= sno++ %></td>
-                            <% cdata.forEach(function(country){
-                            if(country._id==pincode.countryid){ %>
                             <td>
-                              <h6 class="lis-name"><%= country.name %></h6>
-                            </td>
-                            <%} })%> <% sdata.forEach(function(state){
-                            if(state._id==pincode.stateid &&
-                            state.countryid==pincode.countryid ){ %>
-                            <td>
-                              <h6 class="lis-name"><%= state.name %></h6>
-                            </td>
-                            <%} })%> <% data.forEach(function(city){
-                            if(city._id==pincode.cityid &&
-                            city.countryid==pincode.countryid &&
-                            city.stateid==pincode.stateid ){ %>
-                            <td>
-                              <h6 class="lis-name"><%= city.name %></h6>
-                            </td>
-                            <%} })%>
-                            <td>
-                              <h6 class="lis-name"><%= pincode.name %></h6>
+                              <h6 class="lis-name"><%= category.name %></h6>
                             </td>
 
                             <td>
                               <button class="listing-btn">
-                                <%= moment(pincode.created).format(
+                                <%= moment(category.created).format(
                                 'MMM-DD-YYYY') %>
                               </button>
                             </td>
 
                             <td>
-                              <h6 class="lis-name"><%= pincode.pincodeno %></h6>
-                            </td>
-
-                            <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/pincode/edit/<%= pincode._id%>"
+                                href="http://xitysiteadmin.profcymadev.in/directory/client/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
-                                  src="assets/images/icon/edit.png"
+                                  src="/assets/images/icon/edit.png"
                                   alt=""
                                 />
                               </a>
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/pincode/delete/<%= pincode._id%>"
+                                href="http://xitysiteadmin.profcymadev.in/directory/client/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
-                                  src="assets/images/icon/delete.png"
+                                  src="/assets/images/icon/delete.png"
                                   alt=""
                                 />
                               </a>
@@ -169,5 +142,63 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+    <script>
+      function SearchData(event) {
+        event.preventDefault();
+        let key = document.getElementById("search").value;
+        console.log(key);
+        var htmldata = "";
+        axios
+          .get(
+            `http://xitysiteadmin.profcymadev.in/directory/client/search/${key}`
+          )
+          .then(function (res) {
+            var no = 0;
+            res.data.forEach(function (data) {
+              no += 1;
+              const idno = data._id;
+              htmldata += `
+              <tr>
+                <td id = "${idno}">${no} </td>
+                  <td >${data.name}</td>
+                  <td>
+                              <button class="listing-btn">
+                                <%= moment(data.created).format(
+                                'MMM-DD-YYYY') %>
+                              </button>
+                            </td>
+                  <td>
+                              <a
+                                href="http://xitysiteadmin.profcymadev.in/directory/client/edit/${data._id}"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="/assets/images/icon/edit.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+                            <td>
+                              <a
+                                href="http://xitysiteadmin.profcymadev.in/directory/client/delete/${data._id}"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="/assets/images/icon/delete.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+              </tr>
+              `;
+            });
+            document.getElementById("tbody").innerHTML = htmldata;
+          })
+          .catch((err) => {
+            location.reload();
+          });
+      }
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>

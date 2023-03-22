@@ -43,7 +43,7 @@
                                 <a href="#"
                                   ><img
                                     class="bread-home"
-                                    src="assets2/img/icons/bread-home.png"
+                                    src="/assets2/img/icons/bread-home.png"
                                     alt=""
                                 /></a>
                               </li>
@@ -81,7 +81,10 @@
                         <thead>
                           <tr>
                             <td>S.No</td>
-                            <td>Listing Categories</td>
+                            <td>Name</td>
+                            <td>Bussiness Name</td>
+                            <td>Content</td>
+                            <td>Rating</td>
                             <td>Date</td>
                             <td>Edit</td>
                             <td>Delete</td>
@@ -95,6 +98,17 @@
                             <td>
                               <h6 class="lis-name"><%= category.name %></h6>
                             </td>
+                            <td>
+                              <h6 class="lis-name">
+                                <%= category.bussinesname %>
+                              </h6>
+                            </td>
+                            <td>
+                              <h6 class="lis-name"><%= category.content %></h6>
+                            </td>
+                            <td>
+                              <h6 class="lis-name"><%= category.rating %></h6>
+                            </td>
 
                             <td>
                               <button class="listing-btn">
@@ -105,22 +119,22 @@
 
                             <td>
                               <a
-                                href="http://test1.profcymacrm.com:5000/directory/category/edit/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in/directory/testimonial/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
-                                  src="assets/images/icon/edit.png"
+                                  src="/assets/images/icon/edit.png"
                                   alt=""
                                 />
                               </a>
                             </td>
                             <td>
                               <a
-                                href="http://test1.profcymacrm.com:5000/directory/category/delete/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in/directory/testimonial/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
-                                  src="assets/images/icon/delete.png"
+                                  src="/assets/images/icon/delete.png"
                                   alt=""
                                 />
                               </a>
@@ -150,7 +164,7 @@
         var htmldata = "";
         axios
           .get(
-            `http://test1.profcymacrm.com:5000/directory/category/search/${key}`
+            `http://xitysiteadmin.profcymadev.in/directory/category/search/${key}`
           )
           .then(function (res) {
             var no = 0;
@@ -169,7 +183,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://test1.profcymacrm.com:5000/directory/category/edit/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in/directory/category/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -180,7 +194,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://test1.profcymacrm.com:5000/directory/category/delete/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in/directory/category/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

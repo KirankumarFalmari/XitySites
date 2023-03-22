@@ -1,33 +1,33 @@
 <script>
-  function get_all(event) {
-    event.preventDefault();
-    axios
-      .get("http://test1.profcymacrm.com:5000/directory/category/create")
-      .then(function (res) {
-        var no = 0;
-        var htmldata = "";
-        res.data.forEach(function (data) {
-          no += 1;
-          const idno = data._id;
-          htmldata += `
-              <tr>
-                <td id = "${idno}">${no} </td>
-                  <td >${data.name}</td>
-                  <td><img src="${data.path}" class="img-circle mr-2" style="height:50px" alt="..."></td>
-                  <td>${data.status}</td>
-                  
-                    <td>
-                            
-                            <a href="/category/delete/${idno}"  class="mx-2"><i class="fa-solid fa-trash text-danger"></i></a>
-                          </td>
-                  
-                </tr>
-              `;
-        });
+  // function get_all(event) {
+  //   event.preventDefault();
+  //   axios
+  //     .get("http://xitysiteadmin.profcymadev.in/directory/testimonial/create")
+  //     .then(function (res) {
+  //       var no = 0;
+  //       var htmldata = "";
+  //       res.data.forEach(function (data) {
+  //         no += 1;
+  //         const idno = data._id;
+  //         htmldata += `
+  //             <tr>
+  //               <td id = "${idno}">${no} </td>
+  //                 <td >${data.name}</td>
+  //                 <td><img src="${data.path}" class="img-circle mr-2" style="height:50px" alt="..."></td>
+  //                 <td>${data.status}</td>
 
-        document.getElementById("tbody1").innerHTML = htmldata;
-      });
-  }
+  //                   <td>
+
+  //                           <a href="/category/delete/${idno}"  class="mx-2"><i class="fa-solid fa-trash text-danger"></i></a>
+  //                         </td>
+
+  //               </tr>
+  //             `;
+  //       });
+
+  //       document.getElementById("tbody1").innerHTML = htmldata;
+  //     });
+  // }
   window.onload = () => {
     get_all(event);
   };

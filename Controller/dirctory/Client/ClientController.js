@@ -8,16 +8,17 @@ require("../../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
 const ObjectId = require("mongodb").ObjectId;
+
 const multer = require("multer");
-const testimonials = require("../../../Modules/Directory/Testimonials/testimonials");
+const client = require("../../../Modules/Directory/client/client");
 
-const temp = path.join(__dirname, "../../upload/testimonials/");
+const temp = path.join(__dirname, "../../upload/client/");
 
-route.use("/upload/testimonials/", express.static(temp));
+route.use("/upload/client/", express.static(temp));
 route.use(express.static(css_path));
 
 const Storage = multer.diskStorage({
-  destination: "./upload/testimonials/",
+  destination: "./upload/client/",
   filename: (req, file, cb) => {
     return cb(
       null,
@@ -33,10 +34,10 @@ const upload = multer({
 var dt = dateTime.create();
 var formatted = dt.format("Y-m-d H:M:S");
 
-// //Fetch List
+//Fetch List
 route.get("/", async (req, res) => {
-  const data = await testimonials.find({});
-  res.render("directory/Testimonial/index", {
+  const data = await client.find({});
+  res.render("directory/client/index", {
     data: data,
     moment: moment,
   });
@@ -44,41 +45,36 @@ route.get("/", async (req, res) => {
 
 //Create List
 route.get("/create", (req, res) => {
-  res.render("directory/testimonial/create");
+  res.render("directory/client/create");
 });
 
-// Add testimonials
+// Add Category
 route.post("/create", upload.single("image"), async (req, res) => {
-  const data = testimonials({
+  const data = client({
     name: req.body.name,
-    bussinesname: req.body.bname,
     path: req.file.path,
-    content: req.body.content,
-    rating: req.body.rating,
     created: formatted,
   });
 
   await data.save();
-  res.redirect("/directory/testimonial");
+  res.redirect("/directory/client");
 });
 
-// route.get("/search/:key", async (req, resp) => {
-//   let data = await testimonials.find({
-//     $or: [{ name: { $regex: req.params.key } }],
-//   });
-//   // console.log(data);
-//   resp.send(data);
-// });
+route.get("/search/:key", async (req, resp) => {
+  let data = await client.find({
+    $or: [{ name: { $regex: req.params.key } }],
+  });
+  // console.log(data);
+  resp.send(data);
+});
 
 let id;
 //Edit List
 route.get("/edit/:id", async (req, res) => {
   id = req.params.id;
-  const data = await testimonials.find({
-    _id: new ObjectId(req.params.id.trim()),
-  });
+  const data = await client.find({ _id: new ObjectId(req.params.id.trim()) });
   // console.log(data);
-  res.render("directory/testimonial/edit", {
+  res.render("directory/client/edit", {
     data: data,
     moment: moment,
   });
@@ -87,23 +83,19 @@ route.get("/edit/:id", async (req, res) => {
 route.post("/edit", async (req, res) => {
   // console.log(req.body, id);
   try {
-    await testimonials
+    await client
       .findOneAndUpdate(
         { _id: id },
         {
           $set: {
             name: req.body.name,
-            bussinesname: req.body.bname,
-            // path: req.file.path,
-            content: req.body.content,
-            rating: req.body.rating,
             updated: formatted,
           },
         }
       )
       .then(() => {
         // res.sendFile(static_path + "edit.html");
-        res.redirect("/directory/testimonial");
+        res.redirect("/directory/client");
       })
       .catch((err) => {
         console.log(err);
@@ -114,8 +106,8 @@ route.post("/edit", async (req, res) => {
 });
 
 route.get("/delete/:id", async (req, res) => {
-  await testimonials.findByIdAndDelete(req.params.id);
-  res.redirect("/directory/testimonial");
+  await client.findByIdAndDelete(req.params.id);
+  res.redirect("/directory/client");
 });
 
 module.exports = route;

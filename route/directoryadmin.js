@@ -12,6 +12,7 @@ const bussinessuser = require("../Controller/dirctory/Bussines-user/Bussiness-us
 const getinvite = require("../Controller/dirctory/getInvite/GetInviteController");
 const getcontact = require("../Controller/dirctory/getcontact/GetContactController");
 const testimonial = require("../Controller/dirctory/Testimonials/TestimonialsController");
+const client = require("../Controller/dirctory/Client/ClientController");
 
 app.use("/category", verify, category);
 app.use("/subcategory", verify, subcategory);
@@ -20,5 +21,6 @@ app.use("/bussiness-user", bussinessuser);
 app.use("/getinvite", getinvite);
 app.use("/getcontact", getcontact);
 app.use("/testimonial", testimonial);
+app.use("/client", client);
 
 module.exports = app;

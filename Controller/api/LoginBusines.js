@@ -1,6 +1,8 @@
 const base = require("./BaseController");
 const Register = require("../../Modules/Directory/bussiness-users/bussiness-user");
 const jwt = require("jsonwebtoken");
+var request = require("request");
+const otpGenerator = require("otp-generator");
 
 const createToken = (user) => {
   const token = jwt.sign({ _id: user[0]._id }, process.env.SECRET_KEY, {
@@ -60,10 +62,13 @@ const userRegister = async (req, res) => {
   } catch (err) {}
 };
 
+let OTP;
+
 const userLogin = async (req, res) => {
   try {
-    const OTP = 111111;
     const { email, otp } = req.body;
+
+    console.log(otp);
 
     if (email == undefined || email == "" || email == null) {
       res.send(base.sendError("provide a email"));
@@ -116,13 +121,24 @@ const userLogin = async (req, res) => {
   }
 };
 
-const userOtp = async (req, res) => {
+const userOtp = async (req, res, mobile) => {
   try {
-    const url =
-      "http://sms.orcainfosolutions.com/api/mt/SendSMS?user=profcyma&password=password1&senderid=PROGBL&channel=Trans&DCS=0&flashsms=0&number=919718577938&text=Dear%20Customer,%20your%20OTP%20for%20registration%20is%205852582.%20Use%20this%20OTP%20to%20register.%20Team%20Profcyma%20Demo&route=4&PEId=1201159679589190766";
+    OTP = otpGenerator.generate(6, {
+      digits: true,
+      lowerCaseAlphabets: false,
+      upperCaseAlphabets: false,
+      specialChars: false,
+    });
+    // const mobile = 8421245175;
 
-    const OTP = 111111;
-    res.status(200).send(base.sendResponse(OTP, "login successfully"));
+    const url = `http://sms.orcainfosolutions.com/api/mt/SendSMS?user=profcyma&password=password1&senderid=PROGBL&channel=Trans&DCS=0&flashsms=0&number=91${mobile}&text=Dear%20Customer,%20your%20OTP%20for%20registration%20is%20${OTP}.%20Use%20this%20OTP%20to%20register.%20Team%20Profcyma%20Demo&route=4&PEId=1201159679589190766`;
+
+    request(url, function (error, response, body) {
+      if (error) throw new Error(error);
+      res
+        .status(200)
+        .send(base.sendResponse(response.statusCode, "login successfully"));
+    });
   } catch (err) {}
 };
 

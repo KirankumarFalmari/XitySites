@@ -2,15 +2,26 @@ const express = require("express");
 const route = express.Router();
 const path = require("path");
 const jwt = require("jsonwebtoken");
+var request = require("request");
+const otpGenerator = require("otp-generator");
 require("../../Connection/connection");
 const Register = require("../../Modules/Admin-users/admin-users");
 const bodyparser = require("body-parser");
+// const { userLogin } = require("../api/LoginBusines");
+// const login = require("../api/LoginBusines");
 
 route.use(express.json());
 route.use(bodyparser.json());
 route.use(bodyparser.urlencoded({ extended: true }));
 route.use(express.urlencoded({ extended: false }));
 // const static_path = path.join(__dirname, "../../Views");
+
+// const OTP = otpGenerator.generate(6, {
+//   digits: true,
+//   lowerCaseAlphabets: false,
+//   upperCaseAlphabets: false,
+//   specialChars: false,
+// });
 
 route.get("/", (req, res) => {
   if (req.cookies.jwtoken) {
@@ -44,10 +55,6 @@ route.post("/", async (req, res) => {
     if (Number(req.body.pno) === userLogin.phoneno) {
       if (otp === OTP) {
         if (pincode === userLogin.pincode) {
-          //   req.session.user = true;
-
-          // const user = await Register.findOne({ phoneno: req.body.pno });
-
           // Create token
           const token = jwt.sign(
             { user_id: userLogin._id },
@@ -57,10 +64,6 @@ route.post("/", async (req, res) => {
             }
           );
           userLogin.token = token;
-
-          // console.log(userLogin);
-
-          // const token = String(userLogin.token);
 
           res.cookie("jwtoken", token, { httpOnly: true });
           res.redirect("/directory/category/");
@@ -76,6 +79,11 @@ route.post("/", async (req, res) => {
     console.log(err);
   }
 });
+
+// route.post("/admin-otp", async (req, res) => {
+//   console.log(req.body.pno);
+//   login.userOtp(req, res);
+// });
 
 route.post(
   "/create",

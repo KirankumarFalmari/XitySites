@@ -42,8 +42,9 @@ route.post("/user-login", async (req, res) => {
   login.userLogin(req, res);
 });
 
-route.post("/user-otp", async (req, res) => {
-  login.userOtp(req, res);
+route.post("/user-otp/:phone", async (req, res) => {
+  const phone = req.params.phone;
+  login.userOtp(req, res, phone);
 });
 
 module.exports = route;

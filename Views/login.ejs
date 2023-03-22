@@ -237,7 +237,9 @@
                           />
                         </div>
                         <div>
-                          <button class="otp-button btn">Get OTP</button>
+                          <button class="otp-button btn" type="button">
+                            Get OTP
+                          </button>
                         </div>
 
                         <div class="row otp-input">
@@ -306,6 +308,18 @@
     <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
     <script src="assets/jquery/jquery-3.6.1.min.js"></script>
     <script src="assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script>
+      onclick = "call()";
+      const call = () => {
+        const phone = document.getElementById("pno").value;
+        axios
+          .post(`http://test1.profcymacrm.com:5000/api/user-otp/${phone}`)
+          .then((res) => {
+            // console.log("Done");
+          });
+      };
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.0/lottie.min.js"
       integrity="sha512-17otjw7eTNU9MtpB7mFfXEwB6yDjA2qjDFkKSvsywI1PRAgpyOo+cp/wPSE/1kK4fFjA9OKsZVO1tr93MGNCEw=="

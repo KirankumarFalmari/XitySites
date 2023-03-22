@@ -21,7 +21,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="bread-sec1">
-                          <h6 class="title">Add subcategory</h6>
+                          <h6 class="title">Add Category</h6>
                           <p class="sub-cont">
                             <!-- Lorem Ipsum is simply dummy text of the printing -->
                           </p>
@@ -35,14 +35,14 @@
                                 <a href="#"
                                   ><img
                                     class="bread-home"
-                                    src="assets2/img/icons/bread-home.png"
+                                    src="/assets2/img/icons/bread-home.png"
                                     alt=""
                                 /></a>
                               </li>
                               <li class="breadcrumb-item">
                                 <a
                                   class="bread-menu"
-                                  href="http://test1.profcymacrm.com:5000/directory/subcategory"
+                                  href="http://test1.profcymacrm.com:5000/directory/category"
                                   >Category List</a
                                 >
                               </li>
@@ -58,58 +58,10 @@
                   <section class="main-content">
                   
                     <div class="table-section">
-                      <form method="post" action="http://test1.profcymacrm.com:5000/master/state/create" >
-                        <div class="row">
-                          <div class="col-md-6 px-5">
-                          <div class="mb-4 row">
-                            <label for="unit" class="col-md-2 col-sm-4 form-label">select Category</label>
-                            <div class="col-md-8 col-sm-8">
-                              
-                             <select class="form-select" id="selectcountry" name="selectcountry">
-                              <option value="">Select Country</option>
-                                  <% data.forEach(function(country){ %>
-                                   <option value="<%= country._id %>"><%= country.name %></option>
-                                    <% }) %>
-                             </select>
-                         
-                              <div class="form-text text-muted">select Country</div>
-                            </div>
-                          </div>
-                          
-                         
-                       
-                        
-                      </div>
-                      <div class="col-md-6 px-5">
-                        <!-- <div class="mb-4 row">
-                          <label for="image" class="col-md-3 col-sm-4 form-label">Image</label>
-                          <div class="col-md-9 col-sm-8">
-                            <input type="file" class="form-control" id="image" name="image">
-                            <div class="form-text text-muted">Insert Image</div>
-                          </div>
-                        </div> -->
-                        <div class="mb-4 row">
-                          <label for="name" class="col-md-3 col-sm-4 form-label">State Name</label>
-                          <div class="col-md-9 col-sm-8">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Insert State Name">
-                            <div class="form-text text-muted">Insert State Name</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                        <div class="row">
-                          <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
-                            
-                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save State</button>
-                         <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
-   
-                          </div>
-                        </div>
-                      </form>
                   
-                      <!-- <form
+                      <form
                         method="post"
-                        action="http://test1.profcymacrm.com:5000/directory/subcategory/create"
+                        action="http://test1.profcymacrm.com:5000/directory/category/create"
                         enctype="multipart/form-data"
                       >
                         <div class="row">
@@ -118,7 +70,7 @@
                               <label
                                 for="name"
                                 class="col-md-3 col-sm-4 form-label"
-                                >Category Name</label
+                                >Name</label
                               >
                               <div class="col-md-9 col-sm-8">
                                 <input
@@ -126,10 +78,48 @@
                                   class="form-control"
                                   id="name"
                                   name="name"
-                                  placeholder="Insert Category Name"
+                                  placeholder="Insert Name"
                                 />
                                 <div class="form-text text-muted">
-                                  Insert Category Name
+                                  Insert Name
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mb-4 row">
+                              <label
+                                for="name"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Bussiness Name</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="bname"
+                                  name="bname"
+                                  placeholder="Insert Bussiness Name"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Bussiness Name
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mb-4 row">
+                              <label
+                                for="name"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Rating Name</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="rating"
+                                  name="rating"
+                                  placeholder="Insert Rating Name"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Rating Name
                                 </div>
                               </div>
                             </div>
@@ -153,6 +143,26 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="mb-4 row">
+                              <label
+                                for="name"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Content Name</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="content"
+                                  name="content"
+                                  placeholder="Insert Content Name"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Content Name
+                                </div>
+                              </div>
+                            </div>
+                            
                           </div>
                         </div>
                         <div class="row">
@@ -161,7 +171,7 @@
                           >
                             <button class="btn saveBtn my-2 mx-2" type="submit">
                               <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save
-                              Category
+                              Testimonial
                             </button>
                             <button
                               class="btn cancelBtn my-2 mx-2"
@@ -172,7 +182,7 @@
                             </button>
                           </div>
                         </div>
-                      </form> -->
+                      </form>
                     </div>
                   </section>
                   <!-- end main-content section  -->

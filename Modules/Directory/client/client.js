@@ -10,6 +10,10 @@ const client = mongoose.Schema({
     default: "None",
     type: String,
   },
+  status: {
+    type: Boolean,
+    default: true,
+  },
   created: {
     type: Date,
   },

@@ -85,6 +85,7 @@
                             <td>Listing Subcategories</td>
                             <td>Listing Childcategories</td>
                             <td>Date</td>
+                            <td>Status</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
@@ -121,8 +122,19 @@
                             </td>
 
                             <td>
+                              <button
+                                id="statusid"
+                                class="listing-btn"
+                                value="<%= childcategory._id %>"
+                                onclick="Status(event , value)"
+                              >
+                                <%= childcategory.status %>
+                              </button>
+                            </td>
+
+                            <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/edit/<%= childcategory._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/edit/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -133,7 +145,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/delete/<%= childcategory._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/delete/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -159,5 +171,20 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+    <script>
+      function Status(event, value) {
+        let text = "Are you want to change status!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          axios
+            .get(
+              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/status/${value}`
+            )
+            .then(function (res) {
+              location.reload();
+            });
+        } else {
+        }
+      }
+    </script>
   </body>
 </html>

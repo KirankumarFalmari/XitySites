@@ -2,7 +2,9 @@
   function get_all(event) {
     event.preventDefault();
     axios
-      .get("http://xitysiteadmin.profcymadev.in:5000/directory/category/create")
+      .get(
+        "http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/create"
+      )
       .then(function (res) {
         var no = 0;
         var htmldata = "";

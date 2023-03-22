@@ -83,6 +83,7 @@
                             <td>S.No</td>
                             <td>Listing Categories</td>
                             <td>Date</td>
+                            <td>Status</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
@@ -102,10 +103,20 @@
                                 'MMM-DD-YYYY') %>
                               </button>
                             </td>
+                            <td>
+                              <button
+                                id="statusid"
+                                class="listing-btn"
+                                value="<%= category._id %>"
+                                onclick="Status(event , value)"
+                              >
+                                <%= category.status %>
+                              </button>
+                            </td>
 
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/category/edit/<%= category._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -116,7 +127,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/category/delete/<%= category._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -143,6 +154,20 @@
     </section>
     <%- include('../../layout/fotermain'); %>
     <script>
+      function Status(event, value) {
+        let text = "Are you want to change status!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          axios
+            .get(
+              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/status/${value}`
+            )
+            .then(function (res) {
+              location.reload();
+            });
+        } else {
+        }
+      }
+
       function SearchData(event) {
         event.preventDefault();
         let key = document.getElementById("search").value;
@@ -150,7 +175,7 @@
         var htmldata = "";
         axios
           .get(
-            `http://xitysiteadmin.profcymadev.in:5000/directory/category/search/${key}`
+            `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/search/${key}`
           )
           .then(function (res) {
             var no = 0;
@@ -169,7 +194,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/category/edit/${data._id}"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -180,7 +205,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/directory/category/delete/${data._id}"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/category/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

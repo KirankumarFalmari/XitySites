@@ -87,6 +87,7 @@
                             <td>Listing Town</td>
                             <td>Listing Pincode</td>
                             <td>Date</td>
+                            <td>Status</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
@@ -120,6 +121,9 @@
                             </td>
 
                             <td>
+                              <h6 class="lis-name"><%= pincode.pincodeno %></h6>
+                            </td>
+                            <td>
                               <button class="listing-btn">
                                 <%= moment(pincode.created).format(
                                 'MMM-DD-YYYY') %>
@@ -127,12 +131,19 @@
                             </td>
 
                             <td>
-                              <h6 class="lis-name"><%= pincode.pincodeno %></h6>
+                              <button
+                                id="statusid"
+                                class="listing-btn"
+                                value="<%= pincode._id %>"
+                                onclick="Status(event , value)"
+                              >
+                                <%= pincode.status %>
+                              </button>
                             </td>
 
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/pincode/edit/<%= pincode._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/pincode/edit/<%= pincode._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -143,7 +154,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/pincode/delete/<%= pincode._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/pincode/delete/<%= pincode._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -169,5 +180,20 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+    <script>
+      function Status(event, value) {
+        let text = "Are you want to change status!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          axios
+            .get(
+              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/pincode/status/${value}`
+            )
+            .then(function (res) {
+              location.reload();
+            });
+        } else {
+        }
+      }
+    </script>
   </body>
 </html>

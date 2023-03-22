@@ -108,6 +108,40 @@ route.post("/edit", async (req, res) => {
   }
 });
 
+route.get("/status/:id", async (req, res) => {
+  try {
+    // console.log(req.params.id);
+    let status = await category.find({ _id: req.params.id }, { status: 1 });
+    // console.log(status);
+    let value;
+
+    if (status[0].status == true) {
+      value = false;
+    } else {
+      value = true;
+    }
+
+    await category
+      .findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $set: {
+            status: value,
+            updated: formatted,
+          },
+        }
+      )
+      .then(() => {
+        res.redirect("/directory/category");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 route.get("/delete/:id", async (req, res) => {
   await category.findByIdAndDelete(req.params.id);
   await subcategory.deleteMany({ categoryid: req.params.id });

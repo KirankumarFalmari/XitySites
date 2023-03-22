@@ -20,6 +20,10 @@ const Testimonial = mongoose.Schema({
   rating: {
     type: Number,
   },
+  status: {
+    type: Boolean,
+    default: true,
+  },
   created: {
     type: Date,
   },

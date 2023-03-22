@@ -83,6 +83,7 @@
                             <td>S.No</td>
                             <td>Listing Country</td>
                             <td>Date</td>
+                            <td>Status</td>
                             <td>Edit</td>
                             <td>Delete</td>
                           </tr>
@@ -103,8 +104,19 @@
                             </td>
 
                             <td>
+                              <button
+                                id="statusid"
+                                class="listing-btn"
+                                value="<%= country._id %>"
+                                onclick="Status(event , value)"
+                              >
+                                <%= country.status %>
+                              </button>
+                            </td>
+
+                            <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/country/edit/<%= country._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/edit/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -115,7 +127,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/country/delete/<%= country._id%>"
+                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/delete/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -142,6 +154,19 @@
     </section>
     <%- include('../../layout/fotermain'); %>
     <script>
+      function Status(event, value) {
+        let text = "Are you want to change status!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          axios
+            .get(
+              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/status/${value}`
+            )
+            .then(function (res) {
+              location.reload();
+            });
+        } else {
+        }
+      }
       function SearchData(event) {
         event.preventDefault();
         let key = document.getElementById("search").value;
@@ -149,7 +174,7 @@
         var htmldata = "";
         axios
           .get(
-            `http://xitysiteadmin.profcymadev.in:5000/master/country/search/${key}`
+            `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/search/${key}`
           )
           .then(function (res) {
             var no = 0;
@@ -157,39 +182,39 @@
               no += 1;
               const idno = data._id;
               htmldata += `
-              <tr>
-                <td id = "${idno}">${no} </td>
-                  <td >${data.name}</td>
-                  <td>
-                              <button class="listing-btn">
-                                <%= moment(data.created).format(
-                                'MMM-DD-YYYY') %>
-                              </button>
-                            </td>
-                  <td>
-                              <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/country/edit/${data._id}"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="assets/images/icon/edit.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td>
-                            <td>
-                              <a
-                                href="http://xitysiteadmin.profcymadev.in:5000/master/country/delete/${data._id}"
-                              >
-                                <img
-                                  class="icon-img"
-                                  src="assets/images/icon/delete.png"
-                                  alt=""
-                                />
-                              </a>
-                            </td>
-              </tr>
-              `;
+                      <tr>
+                        <td id = "${idno}">${no} </td>
+                          <td >${data.name}</td>
+                          <td>
+                                      <button class="listing-btn">
+                                        <%= moment(data.created).format(
+                                        'MMM-DD-YYYY') %>
+                                      </button>
+                                    </td>
+                          <td>
+                                      <a
+                                        href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/edit/${data._id}"
+                                      >
+                                        <img
+                                          class="icon-img"
+                                          src="assets/images/icon/edit.png"
+                                          alt=""
+                                        />
+                                      </a>
+                                    </td>
+                                    <td>
+                                      <a
+                                        href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/master/country/delete/${data._id}"
+                                      >
+                                        <img
+                                          class="icon-img"
+                                          src="assets/images/icon/delete.png"
+                                          alt=""
+                                        />
+                                      </a>
+                                    </td>
+                      </tr>
+                      `;
             });
             document.getElementById("tbody").innerHTML = htmldata;
           })

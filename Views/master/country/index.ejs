@@ -104,7 +104,7 @@
 
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/country/edit/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/country/edit/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -115,7 +115,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/country/delete/<%= country._id%>"
+                                href="https://xitysites.onrender.com/master/country/delete/<%= country._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -148,9 +148,7 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(
-            `http://xitysiteadmin.profcymadev.in/master/country/search/${key}`
-          )
+          .get(`https://xitysites.onrender.com/master/country/search/${key}`)
           .then(function (res) {
             var no = 0;
             res.data.forEach(function (data) {
@@ -168,7 +166,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/country/edit/${data._id}"
+                                href="https://xitysites.onrender.com/master/country/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -179,7 +177,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://xitysiteadmin.profcymadev.in/master/country/delete/${data._id}"
+                                href="https://xitysites.onrender.com/master/country/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

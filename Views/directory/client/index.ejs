@@ -117,7 +117,7 @@
 
                             <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -128,7 +128,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -160,7 +160,7 @@
         if (confirm(text) == true) {
           axios
             .get(
-              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/status/${value}`
+              `http://xitysiteadmin.profcymadev.in:5000/directory/client/status/${value}`
             )
             .then(function (res) {
               location.reload();
@@ -176,7 +176,7 @@
         var htmldata = "";
         axios
           .get(
-            `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/search/${key}`
+            `http://xitysiteadmin.profcymadev.in:5000/directory/client/search/${key}`
           )
           .then(function (res) {
             var no = 0;
@@ -195,7 +195,7 @@
                             </td>
                   <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -206,7 +206,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

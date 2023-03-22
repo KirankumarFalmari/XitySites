@@ -134,7 +134,7 @@
 
                             <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/edit/<%= childcategory._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/edit/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -145,7 +145,7 @@
                             </td>
                             <td>
                               <a
-                                href="http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/delete/<%= childcategory._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/delete/<%= childcategory._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -177,7 +177,7 @@
         if (confirm(text) == true) {
           axios
             .get(
-              `http://localhost:5000/http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/status/${value}`
+              `http://xitysiteadmin.profcymadev.in:5000/directory/childcategory/status/${value}`
             )
             .then(function (res) {
               location.reload();

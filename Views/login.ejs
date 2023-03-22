@@ -313,7 +313,9 @@
       const call = () => {
         const phone = document.getElementById("pno").value;
         axios
-          .post(`https://xitysites.onrender.com/api/user-otp/${phone}`)
+          .post(
+            `http://xitysiteadmin.profcymadev.in:5000/api/user-otp/${phone}`
+          )
           .then((res) => {
             // console.log("Done");
           });

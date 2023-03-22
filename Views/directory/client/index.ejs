@@ -105,7 +105,7 @@
 
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/directory/client/edit/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -116,7 +116,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/directory/client/delete/<%= category._id%>"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/<%= category._id%>"
                               >
                                 <img
                                   class="icon-img"
@@ -149,7 +149,9 @@
         console.log(key);
         var htmldata = "";
         axios
-          .get(`https://xitysites.onrender.com/directory/client/search/${key}`)
+          .get(
+            `http://xitysiteadmin.profcymadev.in:5000/directory/client/search/${key}`
+          )
           .then(function (res) {
             var no = 0;
             res.data.forEach(function (data) {
@@ -167,7 +169,7 @@
                             </td>
                   <td>
                               <a
-                                href="https://xitysites.onrender.com/directory/client/edit/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/edit/${data._id}"
                               >
                                 <img
                                   class="icon-img"
@@ -178,7 +180,7 @@
                             </td>
                             <td>
                               <a
-                                href="https://xitysites.onrender.com/directory/client/delete/${data._id}"
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/client/delete/${data._id}"
                               >
                                 <img
                                   class="icon-img"

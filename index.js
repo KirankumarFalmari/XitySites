@@ -48,6 +48,7 @@ app.use("/directory", directoryroute);
 const masterroute = require("./route/masteradmin");
 app.use("/master", masterroute);
 //End Route
+console.log(process.env.PORT);
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is up and running on ${PORT} ...`);

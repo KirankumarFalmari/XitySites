@@ -7,6 +7,7 @@ var dateTime = require("node-datetime");
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
+const base = require("../api//BaseController");
 const ObjectId = require("mongodb").ObjectId;
 route.use(express.static(css_path));
 
@@ -26,6 +27,7 @@ route.get("/", async (req, res) => {
     data: data,
     cdata: cdata,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
@@ -35,6 +37,7 @@ route.get("/create", async (req, res) => {
   res.render("master/state/create", {
     data: data,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
@@ -42,15 +45,25 @@ route.post("/create", async (req, res) => {
   const countrydata = await country.find({
     _id: new ObjectId(req.body.selectcountry.trim()),
   });
-  if (countrydata) {
-    const data = state({
-      countryid: req.body.selectcountry,
-      name: req.body.name,
-      created: formatted,
-    });
+  const find = await state.find({
+    countryid: req.body.selectcountry,
+    name: req.body.name,
+  });
+  if (find.length !== 0) {
+    req.flash("message", "State Already Exists");
+    res.redirect("/master/state/create");
+  } else {
+    if (countrydata) {
+      const data = state({
+        countryid: req.body.selectcountry,
+        name: req.body.name,
+        created: formatted,
+      });
 
-    await data.save();
-    res.redirect("/master/state/");
+      await data.save();
+      req.flash("message", "State saved successfully");
+      res.redirect("/master/state/");
+    }
   }
 });
 

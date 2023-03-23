@@ -56,7 +56,12 @@
                     </div>
                   </section>
                   <section class="main-content">
-                  
+                    <%if(message.length > 0){ %>
+                      <div class="alert alert-warning">
+                        <%= message %>
+                      </div>
+                      
+                      <%}%>
                     <div class="table-section">
                       <form method="post" action="http://xitysiteadmin.profcymadev.in:5000/master/city/create" >
                         <div class="row">

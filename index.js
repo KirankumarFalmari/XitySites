@@ -3,6 +3,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
 const path = require("path");
+const session = require("express-session");
+const flash = require("connect-flash");
 const cookie = require("cookie-parser");
 require("./Connection/connection");
 const app = express();
@@ -19,6 +21,17 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/Views"));
 const css_path = path.join(__dirname, "./Public/");
 app.use(express.static(css_path));
+app.use(
+  session({
+    secret: "secret",
+    cookie: {
+      maxAge: 60000,
+    },
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(flash());
 
 dotenv.config();
 

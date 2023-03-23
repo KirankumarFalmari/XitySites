@@ -7,6 +7,7 @@ var dateTime = require("node-datetime");
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
+const base = require("../api//BaseController");
 const ObjectId = require("mongodb").ObjectId;
 
 const country = require("../../Modules/Master/country");
@@ -31,6 +32,7 @@ route.get("/", async (req, res) => {
     cdata: cdata,
     sdata: sdata,
     pdata: pdata,
+    message: req.flash("message"),
     moment: moment,
   });
 });
@@ -61,24 +63,37 @@ route.get("/create", async (req, res) => {
     sdata: sdata,
     cdata: cdata,
     data: data,
+    message: req.flash("message"),
     moment: moment,
   });
 });
 
 // Add country
 route.post("/create", async (req, res) => {
-  const data = pincode({
+  const find = await pincode.find({
     countryid: req.body.selectcountry,
-    stateid: req.body.selectstate,
     cityid: req.body.selectcity,
-    name: req.body.name,
+    stateid: req.body.selectstate,
     pincodeno: req.body.pincodeno,
-    created: formatted,
+    name: req.body.name,
   });
+  if (find.length !== 0) {
+    req.flash("message", "Pincode and Town Already Exists");
+    res.redirect("/master/pincode/create");
+  } else {
+    const data = pincode({
+      countryid: req.body.selectcountry,
+      stateid: req.body.selectstate,
+      cityid: req.body.selectcity,
+      name: req.body.name,
+      pincodeno: req.body.pincodeno,
+      created: formatted,
+    });
 
-  await data.save();
-  res.redirect("/master/pincode");
-  // }
+    await data.save();
+    req.flash("message", "Pincode and Town saved successfully");
+    res.redirect("/master/pincode");
+  }
 });
 
 let id;

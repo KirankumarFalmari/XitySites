@@ -75,7 +75,10 @@
                       </div>
                       <%- include('./dropdown'); %>
                     </div>
+                    <%if(message.length > 0){ %>
+                    <div class="alert alert-success"><%= message %></div>
 
+                    <%}%>
                     <div class="table-section">
                       <table class="table">
                         <thead>
@@ -153,6 +156,7 @@
       </div>
     </section>
     <%- include('../../layout/fotermain'); %>
+
     <script>
       function Status(event, value) {
         let text = "Are you want to change status!\nEither OK or Cancel.";

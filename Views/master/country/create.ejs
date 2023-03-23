@@ -56,13 +56,18 @@
                     </div>
                   </section>
                   <section class="main-content">
+                    <%if(message.length > 0){ %>
+                      <div class="alert alert-warning">
+                        <%= message %>
+                      </div>
+                      
+                      <%}%>
                   
                     <div class="table-section">
                   
                       <form
                         method="post"
                         action="http://xitysiteadmin.profcymadev.in:5000/master/country/create"
-                        
                       >
                         <div class="row">
                           <div class="col-md-6 px-5">
@@ -120,6 +125,22 @@
         <!-- end admin dashboard-section -->
       </div>
     </section>
+    <% if(typeof message != "undefined" && message) { %>
+
+      <div class="mt-5 mb-3">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong><%= message %></strong>
+  
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+  
+      <% } %>
     <%- include('../../layout/fotermain'); %>
   </body>
 </html>

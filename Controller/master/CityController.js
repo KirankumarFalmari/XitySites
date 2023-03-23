@@ -8,6 +8,7 @@ require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
 const ObjectId = require("mongodb").ObjectId;
+const base = require("../api//BaseController");
 
 const country = require("../../Modules/Master/country");
 const state = require("../../Modules/Master/state");
@@ -29,6 +30,7 @@ route.get("/", async (req, res) => {
     data: data,
     cdata: cdata,
     sdata: sdata,
+    message: req.flash("message"),
     moment: moment,
   });
 });
@@ -55,22 +57,33 @@ route.get("/create", async (req, res) => {
   res.render("master/city/create", {
     sdata: sdata,
     cdata: cdata,
+    message: req.flash("message"),
     moment: moment,
   });
 });
 
 // Add country
 route.post("/create", async (req, res) => {
-  const data = city({
+  const find = await city.find({
     countryid: req.body.selectcountry,
     stateid: req.body.selectstate,
     name: req.body.name,
-    created: formatted,
   });
+  if (find.length !== 0) {
+    req.flash("message", "City Already Exists");
+    res.redirect("/master/city/create");
+  } else {
+    const data = city({
+      countryid: req.body.selectcountry,
+      stateid: req.body.selectstate,
+      name: req.body.name,
+      created: formatted,
+    });
 
-  await data.save();
-  res.redirect("/master/city");
-  // }
+    await data.save();
+    req.flash("message", "City saved successfully");
+    res.redirect("/master/city");
+  }
 });
 
 let id;

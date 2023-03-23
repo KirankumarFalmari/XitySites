@@ -6,11 +6,14 @@ const bodyparser = require("body-parser");
 var dateTime = require("node-datetime");
 const ObjectId = require("mongodb").ObjectId;
 const moment = require("moment");
+const base = require("../api//BaseController");
+const flash = require("connect-flash");
 
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 // console.log(css_path);
 route.use(express.static(css_path));
+route.use(flash());
 
 const country = require("../../Modules/Master/country");
 const state = require("../../Modules/Master/state");
@@ -27,21 +30,30 @@ route.get("/", async (req, res) => {
   res.render("master/country/index", {
     data: data,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
 //Create List
 route.get("/create", (req, res) => {
-  res.render("master/country/create");
+  res.render("master/country/create", { message: req.flash("message") });
 });
 
 route.post("/create", async (req, res) => {
-  const data = country({
-    name: req.body.name,
-    created: formatted,
-  });
-  await data.save();
-  res.redirect("/master/country/");
+  const find = await country.find({ name: req.body.name });
+
+  if (find.length !== 0) {
+    req.flash("message", "Country Already Exists");
+    res.redirect("/master/country/create");
+  } else {
+    const data = country({
+      name: req.body.name,
+      created: formatted,
+    });
+    await data.save();
+    req.flash("message", "Country saved successfully");
+    res.redirect("/master/country");
+  }
 });
 
 let id;

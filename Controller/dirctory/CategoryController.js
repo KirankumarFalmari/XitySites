@@ -7,6 +7,7 @@ var dateTime = require("node-datetime");
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
+const base = require("../api//BaseController");
 const ObjectId = require("mongodb").ObjectId;
 // route.use(express.static(moment));
 const multer = require("multer");
@@ -43,24 +44,32 @@ route.get("/", async (req, res) => {
   res.render("directory/category/index", {
     data: data,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
 //Create List
 route.get("/create", (req, res) => {
-  res.render("directory/category/create");
+  res.render("directory/category/create", { message: req.flash("message") });
 });
 
 // Add Category
 route.post("/create", upload.single("image"), async (req, res) => {
-  const data = category({
-    name: req.body.name,
-    path: req.file.path,
-    created: formatted,
-  });
+  const find = await category.find({ name: req.body.name });
 
-  await data.save();
-  res.redirect("/directory/category");
+  if (find.length !== 0) {
+    req.flash("message", "Category Already Exists");
+    res.redirect("/directory/category/create");
+  } else {
+    const data = category({
+      name: req.body.name,
+      path: req.file.path,
+      created: formatted,
+    });
+    await data.save();
+    req.flash("message", "Category saved successfully");
+    res.redirect("/directory/category");
+  }
 });
 
 route.get("/search/:key", async (req, resp) => {

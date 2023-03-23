@@ -7,6 +7,7 @@ var dateTime = require("node-datetime");
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
+const base = require("../api//BaseController");
 const ObjectId = require("mongodb").ObjectId;
 const multer = require("multer");
 const category = require("../../Modules/Directory/category");
@@ -47,6 +48,7 @@ route.get("/", async (req, res) => {
     cdata: cdata,
     sdata: sdata,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 route.get("/search/:key", async (req, resp) => {
@@ -72,6 +74,7 @@ route.get("/create", async (req, res) => {
     sdata: sdata,
     cdata: cdata,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
@@ -82,19 +85,29 @@ route.post("/create", upload.single("image"), async (req, res) => {
   //   _id: new ObjectId(req.body.selectcategory.trim()),
   // });
   //   console.log(categorydata);
-  // if (categorydata) {
-  const data = childcategory({
-    // categoryid: categorydata[0].categoryid,
+  const find = await childcategory.find({
     categoryid: req.body.selectcategory,
     subcategoryid: req.body.selectsubcategory,
     name: req.body.name,
-    path: req.file.path,
-    created: formatted,
   });
+  if (find.length !== 0) {
+    req.flash("message", "Category Already Exists");
+    res.redirect("/directory/childcategory/create");
+  } else {
+    // if (categorydata) {
+    const data = childcategory({
+      // categoryid: categorydata[0].categoryid,
+      categoryid: req.body.selectcategory,
+      subcategoryid: req.body.selectsubcategory,
+      name: req.body.name,
+      path: req.file.path,
+      created: formatted,
+    });
 
-  await data.save();
-  res.redirect("/directory/childcategory");
-  // }
+    await data.save();
+    req.flash("message", "childcategory saved successfully");
+    res.redirect("/directory/childcategory");
+  }
 });
 
 let id;

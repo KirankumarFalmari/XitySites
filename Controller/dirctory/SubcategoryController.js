@@ -7,6 +7,7 @@ var dateTime = require("node-datetime");
 require("../../Connection/connection");
 const css_path = path.join(__dirname, "../../Public/");
 const moment = require("moment");
+const base = require("../api//BaseController");
 const ObjectId = require("mongodb").ObjectId;
 const multer = require("multer");
 const category = require("../../Modules/Directory/category");
@@ -46,6 +47,7 @@ route.get("/", async (req, res) => {
     data: data,
     cdata: cdata,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
@@ -63,6 +65,7 @@ route.get("/create", async (req, res) => {
   res.render("directory/subcategory/create", {
     data: data,
     moment: moment,
+    message: req.flash("message"),
   });
 });
 
@@ -72,16 +75,26 @@ route.post("/create", upload.single("image"), async (req, res) => {
   const categorydata = await category.find({
     _id: new ObjectId(req.body.selectcategory.trim()),
   });
-  if (categorydata) {
-    const data = subcategory({
-      categoryid: req.body.selectcategory,
-      name: req.body.name,
-      path: req.file.path,
-      created: formatted,
-    });
+  const find = await subcategory.find({
+    categoryid: req.body.selectcategory,
+    name: req.body.name,
+  });
+  if (find.length !== 0) {
+    req.flash("message", "Subcategory Already Exists");
+    res.redirect("/directory/subcategory/create");
+  } else {
+    if (categorydata) {
+      const data = subcategory({
+        categoryid: req.body.selectcategory,
+        name: req.body.name,
+        path: req.file.path,
+        created: formatted,
+      });
 
-    await data.save();
-    res.redirect("/directory/subcategory/");
+      await data.save();
+      req.flash("message", "Subcategory saved successfully");
+      res.redirect("/directory/subcategory/");
+    }
   }
 });
 

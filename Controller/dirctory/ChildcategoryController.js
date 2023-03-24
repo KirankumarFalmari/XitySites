@@ -91,7 +91,7 @@ route.post("/create", upload.single("image"), async (req, res) => {
     name: req.body.name,
   });
   if (find.length !== 0) {
-    req.flash("message", "Category Already Exists");
+    req.flash("message", "Childcategory Already Exists");
     res.redirect("/directory/childcategory/create");
   } else {
     // if (categorydata) {
@@ -105,7 +105,7 @@ route.post("/create", upload.single("image"), async (req, res) => {
     });
 
     await data.save();
-    req.flash("message", "childcategory saved successfully");
+    req.flash("message", "Childcategory saved successfully");
     res.redirect("/directory/childcategory");
   }
 });

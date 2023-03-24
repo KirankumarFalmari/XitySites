@@ -23,6 +23,7 @@ const css_path = path.join(__dirname, "./Public/");
 app.use(express.static(css_path));
 app.use(
   session({
+    key: "flash",
     secret: "secret",
     cookie: {
       maxAge: 60000,
@@ -42,6 +43,16 @@ const bussinesslogin = require("./Controller/dirctory/Bussines-user/bussiness-lo
 // const dashboard = require("./Controls/Dashboard/dashboard");
 
 app.use("/", login);
+
+app.get("/logout", (req, res) => {
+  if (req.cookies.jwtoken) {
+    res.clearCookie("jwtoken");
+    res.clearCookie("flash");
+    res.redirect("/");
+  } else {
+    res.redirect("/");
+  }
+});
 
 // api get dada Country state city pincode
 const api = require("./route/api");

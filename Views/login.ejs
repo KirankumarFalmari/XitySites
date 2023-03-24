@@ -186,8 +186,12 @@
                 </div>
               </div>
             </div>
+
             <div class="col-lg-4 col-md-12 sec-2-pad section-2">
               <div class="row overflow-section2">
+                <%if(message.length > 0){ %>
+                <div class="alert alert-success"><%= message %></div>
+                <%}%>
                 <div
                   class="col-xxl-7 col-lg-9 col-md-6 col-sm-7 col-10 mx-auto"
                 >
@@ -237,7 +241,12 @@
                           />
                         </div>
                         <div>
-                          <button class="otp-button btn" type="button">
+                          <button
+                            class="otp-button btn"
+                            type="button"
+                            onclick="call(event)"
+                            ;
+                          >
                             Get OTP
                           </button>
                         </div>
@@ -309,15 +318,19 @@
     <script src="assets/jquery/jquery-3.6.1.min.js"></script>
     <script src="assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script>
-      onclick = "call()";
-      const call = () => {
+      const call = (event) => {
         const phone = document.getElementById("pno").value;
+
         axios
-          .post(
-            `http://xitysiteadmin.profcymadev.in:5000/api/user-otp/${phone}`
-          )
+          .post(`http://xitysiteadmin.profcymadev.in:5000/admin-otp/${phone}`)
           .then((res) => {
-            // console.log("Done");
+            console.log(res.data.userExist);
+            if (res.data.userExist !== true) {
+              location.reload();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
           });
       };
     </script>

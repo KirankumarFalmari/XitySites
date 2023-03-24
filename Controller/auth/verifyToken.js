@@ -17,6 +17,8 @@ const verifyToken = (req, res, next) => {
     req.user = decoded;
   } catch (err) {
     // return res.status(401).send("Invalid Token");
+    res.clearCookie("jwtoken");
+    res.clearCookie("flash");
     res.redirect("/");
   }
   return next();

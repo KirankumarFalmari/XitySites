@@ -253,26 +253,66 @@
 
                         <div class="row otp-input">
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp1" name="otp1" />
+                            <input
+                              class="form-control"
+                              id="otp1"
+                              name="otp1"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'otp2')"
+                            />
                           </div>
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp2" name="otp2" />
+                            <input
+                              class="form-control"
+                              id="otp2"
+                              name="otp2"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'otp3')"
+                            />
                           </div>
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp3" name="otp3" />
+                            <input
+                              class="form-control"
+                              id="otp3"
+                              name="otp3"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'otp4')"
+                            />
                           </div>
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp4" name="otp4" />
+                            <input
+                              class="form-control"
+                              id="otp4"
+                              name="otp4"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'otp5')"
+                            />
                           </div>
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp5" name="otp5" />
+                            <input
+                              class="form-control"
+                              id="otp5"
+                              name="otp5"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'otp6')"
+                            />
                           </div>
                           <div class="col-2 p-md-2 p-2 text-center mx-auto">
-                            <input class="form-control" id="otp6" name="otp6" />
+                            <input
+                              class="form-control"
+                              id="otp6"
+                              name="otp6"
+                              maxlength="1"
+                              onkeyup="clickEvent(this,'signin')"
+                            />
                           </div>
                         </div>
                         <p class="resend-otp">Resend OTP in 00:37</p>
-                        <button type="submit" class="form-submit btn">
+                        <button
+                          type="submit"
+                          id="signin"
+                          class="form-submit btn"
+                        >
                           Sign In
                         </button>
                       </form>
@@ -318,6 +358,11 @@
     <script src="assets/jquery/jquery-3.6.1.min.js"></script>
     <script src="assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script>
+      const clickEvent = (first, last) => {
+        if (first.value.length) {
+          document.getElementById(last).focus();
+        }
+      };
       const call = (event) => {
         const phone = document.getElementById("pno").value;
 

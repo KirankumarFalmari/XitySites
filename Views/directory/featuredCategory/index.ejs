@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xitysites</title>
+    <%- include('../../layout/css'); %>
+  </head>
+
+  <body>
+    <section class="main">
+      <div class="container-fluid p-0">
+        <!-- start admin dashboard-section -->
+        <section class="admin-dashboard">
+          <div class="dashboard p-0">
+            <div class="d-flex" id="addFlex">
+              <!-- start sidebar section  -->
+              <%- include('../../layout/sidebar'); %>
+
+              <!-- end sidebar section  -->
+
+              <!-- start content section  -->
+              <div class="sec-2">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <%- include('../../layout/header'); %>
+
+                  <!-- start breadcrumb section  -->
+                  <section class="breadcrumb-section">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="bread-sec1">
+                          <h6 class="title">Sample Text</h6>
+                          <p class="sub-cont">
+                            Lorem Ipsum is simply dummy text of the printing
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="bread-sec2">
+                          <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb align-bread">
+                              <li class="breadcrumb-item">
+                                <a href="#"
+                                  ><img
+                                    class="bread-home"
+                                    src="assets2/img/icons/bread-home.png"
+                                    alt=""
+                                /></a>
+                              </li>
+                              <li class="breadcrumb-item">
+                                <a class="bread-menu" href="#">Pages</a>
+                              </li>
+                              <li class="breadcrumb-item" aria-current="page">
+                                <a class="bread-menu" href="#">Sample Page</a>
+                              </li>
+                            </ol>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- end breadcrumb section  -->
+
+                  <!-- start main-content section  -->
+                  <section class="main-content">
+                    <div class="row row-padd">
+                      <div class="col-lg-8">
+                        <div class="listing-div">
+                          <h6 class="list-title">All Listing Categories</h6>
+                          <p class="list-subtext">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt
+                          </p>
+                        </div>
+                      </div>
+                      <%- include('./dropdown'); %>
+                    </div>
+                    <%if(message.length > 0){ %>
+                    <div class="alert alert-success"><%= message %></div>
+
+                    <%}%>
+                    <div class="table-section">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <td>S.No</td>
+                            <td>Listing Country</td>
+                            <td>Date</td>
+                            <td>Status</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                          </tr>
+                        </thead>
+                        <tbody id="tbody">
+                          <% var sno=1 %> <% data.forEach(function(country) { %>
+                          <tr>
+                            <td><%= sno++ %></td>
+                            <td>
+                              <h6 class="lis-name"><%= country.name %></h6>
+                            </td>
+
+                            <td>
+                              <button class="listing-btn">
+                                <%= moment(country.created).format(
+                                'MMM-DD-YYYY') %>
+                              </button>
+                            </td>
+
+                            <td>
+                              <button
+                                id="statusid"
+                                class="listing-btn"
+                                value="<%= country._id %>"
+                                onclick="Status(event , value)"
+                              >
+                                <%= country.status %>
+                              </button>
+                            </td>
+
+                            <td>
+                              <a
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/edit/<%= country._id%>"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="assets/images/icon/edit.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+                            <td>
+                              <a
+                                href="http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/delete/<%= country._id%>"
+                              >
+                                <img
+                                  class="icon-img"
+                                  src="assets/images/icon/delete.png"
+                                  alt=""
+                                />
+                              </a>
+                            </td>
+                          </tr>
+                          <% }); %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                  <!-- end main-content section  -->
+                </div>
+              </div>
+              <!-- end content section  -->
+            </div>
+          </div>
+        </section>
+        <!-- end admin dashboard-section -->
+      </div>
+    </section>
+    <%- include('../../layout/fotermain'); %>
+
+    <script>
+      function Status(event, value) {
+        let text = "Are you want to change status!\nEither OK or Cancel.";
+        if (confirm(text) == true) {
+          axios
+            .get(
+              `http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/status/${value}`
+            )
+            .then(function (res) {
+              location.reload();
+            });
+        } else {
+        }
+      }
+      function SearchData(event) {
+        event.preventDefault();
+        let key = document.getElementById("search").value;
+        console.log(key);
+        var htmldata = "";
+        axios
+          .get(
+            `http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/search/${key}`
+          )
+          .then(function (res) {
+            var no = 0;
+            res.data.forEach(function (data) {
+              no += 1;
+              const idno = data._id;
+              htmldata += `
+                      <tr>
+                        <td id = "${idno}">${no} </td>
+                          <td >${data.name}</td>
+                          <td>
+                                      <button class="listing-btn">
+                                        <%= moment(data.created).format(
+                                        'MMM-DD-YYYY') %>
+                                      </button>
+                                    </td>
+                          <td>
+                                      <a
+                                        href="http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/edit/${data._id}"
+                                      >
+                                        <img
+                                          class="icon-img"
+                                          src="assets/images/icon/edit.png"
+                                          alt=""
+                                        />
+                                      </a>
+                                    </td>
+                                    <td>
+                                      <a
+                                        href="http://xitysiteadmin.profcymadev.in:5000/directory/featuredcategory/delete/${data._id}"
+                                      >
+                                        <img
+                                          class="icon-img"
+                                          src="assets/images/icon/delete.png"
+                                          alt=""
+                                        />
+                                      </a>
+                                    </td>
+                      </tr>
+                      `;
+            });
+            document.getElementById("tbody").innerHTML = htmldata;
+          })
+          .catch((err) => {
+            location.reload();
+          });
+      }
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </body>
+</html>

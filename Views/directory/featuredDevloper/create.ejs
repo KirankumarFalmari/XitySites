@@ -1,0 +1,210 @@
+        <!-- start sidebar section  -->
+        <%- include('../../layout/main'); %>
+    <section class="main">
+      <div class="container-fluid p-0">
+        <!-- start admin dashboard-section -->
+        <section class="admin-dashboard">
+          <div class="dashboard p-0">
+            <div class="d-flex" id="addFlex">
+              <!-- start sidebar section  -->
+              <%- include('../../layout/sidebar'); %>
+
+              <!-- end sidebar section  -->
+
+              <!-- start content section  -->
+              <div class="sec-2">
+                <div class="tab-content" id="v-pills-tabContent">
+                  <%- include('../../layout/header'); %>
+
+                  <!-- start breadcrumb section  -->
+                  <section class="breadcrumb-section">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="bread-sec1">
+                          <h6 class="title">Add subcategory</h6>
+                          <p class="sub-cont">
+                            <!-- Lorem Ipsum is simply dummy text of the printing -->
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="bread-sec2">
+                          <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb align-bread">
+                              <li class="breadcrumb-item">
+                                <a href="#"
+                                  ><img
+                                    class="bread-home"
+                                    src="assets2/img/icons/bread-home.png"
+                                    alt=""
+                                /></a>
+                              </li>
+                              <li class="breadcrumb-item">
+                                <a
+                                  class="bread-menu"
+                                  href="http://xitysiteadmin.profcymadev.in:5000/directory/featureddevloper"
+                                  >Category List</a
+                                >
+                              </li>
+                              <li class="breadcrumb-item" aria-current="page">
+                                <a class="bread-menu" href="#">Add Category</a>
+                              </li>
+                            </ol>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="main-content">
+                    <%if(message.length > 0){ %>
+                      <div class="alert alert-warning">
+                        <%= message %>
+                      </div>
+                      
+                      <%}%>
+                    <div class="table-section">
+                      <form method="post" action="http://xitysiteadmin.profcymadev.in:5000/directory/featureddevloper/create" enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-md-6 px-5">
+                          <div class="mb-4 row">
+                            <label for="unit" class="col-md-2 col-sm-4 form-label">select Featured Category</label>
+                            <div class="col-md-8 col-sm-8">
+                              
+                             <select class="form-select" id="selectcategory" name="selectcategory">
+                              <option value="">Select Featured Category</option>
+                                  <% data.forEach(function(category){ %>
+                                   <option value="<%= category._id %>"><%= category.name %></option>
+                                    <% }) %>
+                             </select>
+                         
+                              <div class="form-text text-muted">select featured category</div>
+                            </div>
+                          </div>
+                          <div class="mb-4 row">
+                            <label for="name" class="col-md-3 col-sm-4 form-label">Featured Devloper Name</label>
+                            <div class="col-md-9 col-sm-8">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Insert Featured Devloper Name">
+                              <div class="form-text text-muted">Insert Featured Devloper Name</div>
+                            </div>
+                          </div>
+                          <div class="mb-4 row">
+                            <label for="name" class="col-md-3 col-sm-4 form-label">Featured Devloper Review</label>
+                            <div class="col-md-9 col-sm-8">
+                              <input type="number" class="form-control" id="review" name="review" placeholder="Insert Featured Devloper Review">
+                              <div class="form-text text-muted">Insert Featured Devloper Review</div>
+                            </div>
+                          </div>
+                         
+                       
+                        
+                      </div>
+                      <div class="col-md-6 px-5">
+                        <div class="mb-4 row">
+                          <label for="image" class="col-md-3 col-sm-4 form-label">Image</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="file" class="form-control" id="image" name="image">
+                            <div class="form-text text-muted">Insert Image</div>
+                          </div>
+                        </div>
+                        <div class="mb-4 row">
+                          <label for="name" class="col-md-3 col-sm-4 form-label">Featured Devloper Location</label>
+                          <div class="col-md-9 col-sm-8">
+                            <input type="text" class="form-control" id="location" name="location" placeholder="Insert Featured Devloper Location">
+                            <div class="form-text text-muted">Insert Featured Devloper Location</div>
+                          </div>
+                        </div>
+                        
+                        
+                      </div>
+                    </div>
+                        <div class="row">
+                          <div class="col-md-12 text-lg-end text-start my-4 py-3 border-top">
+                            
+                         <button  class="btn saveBtn my-2 mx-2" type="submit"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Featured Devloper</button>
+                         <button  class="btn cancelBtn my-2 mx-2" type="reset"><i class="fa-solid fa-arrow-rotate-right"></i>&nbsp;Cancel</button>
+   
+                          </div>
+                        </div>
+                      </form>
+                  
+                      <!-- <form
+                        method="post"
+                        action="http://xitysiteadmin.profcymadev.in:5000/directory/subcategory/create"
+                        enctype="multipart/form-data"
+                      >
+                        <div class="row">
+                          <div class="col-md-6 px-5">
+                            <div class="mb-4 row">
+                              <label
+                                for="name"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Category Name</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="name"
+                                  name="name"
+                                  placeholder="Insert Category Name"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Category Name
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 px-5">
+                            <div class="mb-4 row">
+                              <label
+                                for="image"
+                                class="col-md-3 col-sm-4 form-label"
+                                >Image</label
+                              >
+                              <div class="col-md-9 col-sm-8">
+                                <input
+                                  type="file"
+                                  class="form-control"
+                                  id="image"
+                                  name="image"
+                                />
+                                <div class="form-text text-muted">
+                                  Insert Image
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div
+                            class="col-md-12 text-lg-end text-start my-4 py-3 border-top"
+                          >
+                            <button class="btn saveBtn my-2 mx-2" type="submit">
+                              <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save
+                              Category
+                            </button>
+                            <button
+                              class="btn cancelBtn my-2 mx-2"
+                              type="reset"
+                            >
+                              <i class="fa-solid fa-arrow-rotate-right"></i
+                              >&nbsp;Cancel
+                            </button>
+                          </div>
+                        </div>
+                      </form> -->
+                    </div>
+                  </section>
+                  <!-- end main-content section  -->
+                </div>
+              </div>
+              <!-- end content section  -->
+            </div>
+          </div>
+        </section>
+        <!-- end admin dashboard-section -->
+      </div>
+    </section>
+    <%- include('../../layout/fotermain'); %>
+  </body>
+</html>
